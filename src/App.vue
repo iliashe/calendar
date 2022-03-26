@@ -1,58 +1,50 @@
 <template>
-<div class='main'>
-  <div class='side-menu'>
-    <side-menu />
-  </div>
-  <div class='calendar-plane'>
-    <div class='calendar-plane-header'>
-      <div class='calendar-plane-header-arrows'></div>
-      <div class='calendar-plane-header-toggle'>
-        <button>Day</button>
-        <button>Week</button>
-        <button>Month</button>
-        <button>Year</button>
-      </div>
-      <div class='calendar-plane-header-search'></div>
-    </div>
-    <div class='calendar-plane-body'>
-      <week />
-    </div>
-  </div>
-</div>
+<section class='side-menu'>
+  <side-menu />
+</section>
+<section class='calendar-plane flex-1 flex-col'>
+  <calendar-plane-header/>
+  <!-- <day-view /> -->
+  <!-- <week-view /> -->
+  <!-- <month-view /> -->
+  <year-view />
+</section>
 </template>
 
 <script>
-import Week from './views/Week.vue';
-import SideMenu from './components/Sidemenu/SideMenu.vue';
+import CalendarPlaneHeader from './components/CalendarPlaneHeader.vue';
+// import DayView from './views/Day.vue';
+// import MonthView from './views/Month.vue';
+import SideMenu from './components/side_menu/SideMenu.vue';
+// import WeekView from './views/Week.vue';
+import YearView from './views/Year.vue';
 
 export default {
-  name: 'App',
-  data() {
-    return {
-      msg: '',
-      btnClicked: false,
-    };
-  },
   components: {
+    CalendarPlaneHeader,
+    // DayView,
+    // MonthView,
     SideMenu,
-    Week,
-  },
-  methods: {
-    sendMsg() {
-      this.btnClicked = true;
-      this.msg = 'Yoshkin Kot';
-    },
+    // WeekView,
+    YearView,
   },
 };
 </script>
 
 <style lang="scss">
-// #app {
-//   font-family: Avenir, Helvetica, Arial, sans-serif;
-//   -webkit-font-smoothing: antialiased;
-//   -moz-osx-font-smoothing: grayscale;
-//   text-align: center;
-//   color: #2c3e50;
-//   margin-top: 60px;
-// }
+#app{
+    display: flex;
+}
+
+.calendar-plane {
+  background-color: #F8F8FF;
+}
+
+main {
+  height: 100%;
+}
+
+.side-menu {
+  background-color: #808080;
+}
 </style>
