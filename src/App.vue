@@ -7,7 +7,7 @@
   <!-- <day-view /> -->
   <!-- <week-view /> -->
   <!-- <month-view /> -->
-  <year-view />
+  <!-- <year-view /> -->
 </section>
 </template>
 
@@ -17,7 +17,7 @@ import CalendarPlaneHeader from './components/CalendarPlaneHeader.vue';
 // import MonthView from './views/Month.vue';
 import SideMenu from './components/side_menu/SideMenu.vue';
 // import WeekView from './views/Week.vue';
-import YearView from './views/Year.vue';
+// import YearView from './views/Year.vue';
 
 export default {
   components: {
@@ -26,7 +26,7 @@ export default {
     // MonthView,
     SideMenu,
     // WeekView,
-    YearView,
+    // YearView,
   },
 };
 </script>
