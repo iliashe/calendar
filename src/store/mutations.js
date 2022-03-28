@@ -5,6 +5,11 @@ const updateCurrMonth = function (state, month) {
   state.currDate.currMonth.shortName = getMonth.shortName;
 };
 
+const updateCurrYear = function (state, year) {
+  state.currDate.currYear = year;
+};
+
 export default {
   updateCurrMonth,
+  updateCurrYear,
 };
