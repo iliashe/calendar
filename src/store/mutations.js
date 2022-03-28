@@ -1,15 +1,8 @@
-const updateCurrMonth = function (state, monthName) {
-  state.currDate.currMonth.fullName = monthName;
-  // forEach doesnt work
-  const monthId = state.months.forEach((element) => (
-    element.fullName === monthName ? element.id : 55));
-  state.currDate.currMonth.id = monthId;
-  //   for (const month of state.months) {
-  //     if (month.fullName === monthName) {
-  //       state.currDate.currMonth.id = month.daysInMonth;
-  //     }
-  //   }
-  state.currDate.currMonth.shortName = monthName.slice(0, 3);
+const updateCurrMonth = function (state, month) {
+  const getMonth = state.months.filter((el) => el.fullName === month)[0];
+  state.currDate.currMonth.fullName = getMonth.fullName;
+  state.currDate.currMonth.id = getMonth.id;
+  state.currDate.currMonth.shortName = getMonth.shortName;
 };
 
 export default {
