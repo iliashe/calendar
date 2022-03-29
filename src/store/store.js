@@ -4,20 +4,18 @@ import mutations from './mutations';
 
 export default createStore({
   state: {
-    currDate: {
-      currDay: {
-        date: new Date().getDate(),
-        fullName: new Intl.DateTimeFormat('en-US', { weekday: 'long' }).format(new Date()),
-        shortName: new Intl.DateTimeFormat('en-US', { weekday: 'short' }).format(new Date()),
-      },
-      currMonth: {
-        fullName: new Intl.DateTimeFormat('en-US', { month: 'long' }).format(new Date()),
-        id: new Date().getMonth(),
-        shortName: new Intl.DateTimeFormat('en-US', { month: 'short' }).format(new Date()),
-      },
-      currWeek: 0,
-      currYear: new Date().getFullYear(),
+    currDay: {
+      date: new Date().getDate(),
+      fullName: new Intl.DateTimeFormat('en-US', { weekday: 'long' }).format(new Date()),
+      shortName: new Intl.DateTimeFormat('en-US', { weekday: 'short' }).format(new Date()),
     },
+    currMonth: {
+      fullName: new Intl.DateTimeFormat('en-US', { month: 'long' }).format(new Date()),
+      id: new Date().getMonth(),
+      shortName: new Intl.DateTimeFormat('en-US', { month: 'short' }).format(new Date()),
+    },
+    currWeek: 0,
+    currYear: new Date().getFullYear(),
 
     daysOfWeek: [
       {
