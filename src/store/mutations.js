@@ -1,4 +1,14 @@
 /* eslint-disable */
+const toggleView = function (state, activeCalendarView) {
+  for(const view of state.views){
+    if(view.name === activeCalendarView){
+      view.isActive = true;
+    } else {
+      view.isActive = false;
+    }
+  }
+};
+
 const updateCurrMonth = function (state, month) {
   const getMonth = (typeof (month) === 'string'
     ? state.months.filter((el) => el.fullName === month)[0]
@@ -17,6 +27,7 @@ const updateCurrYear = function (state, year) {
 };
 
 export default {
+  toggleView,
   updateCurrMonth,
   updateCurrYear,
 };

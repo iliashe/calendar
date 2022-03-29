@@ -60,7 +60,8 @@ export default {
       'getDaysInMonth',
       'getFirstDayOfMonth',
     ]),
-    ...mapState(['currMonth',
+    ...mapState([
+      'currMonth',
       'currYear',
       'daysOfWeek',
       'months',

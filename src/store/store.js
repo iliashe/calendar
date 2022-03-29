@@ -133,6 +133,25 @@ export default createStore({
         shortName: 'Dec',
       },
     ],
+
+    views: [
+      {
+        name: 'Day',
+        isActive: false,
+      },
+      {
+        name: 'Week',
+        isActive: true,
+      },
+      {
+        name: 'Month',
+        isActive: false,
+      },
+      {
+        name: 'Year',
+        isActive: false,
+      },
+    ],
   },
 
   getters,
