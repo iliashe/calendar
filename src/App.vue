@@ -4,29 +4,33 @@
 </section>
 <section class='calendar-plane flex-1 flex-col'>
   <calendar-plane-header/>
-  <!-- <day-view /> -->
-  <!-- <week-view /> -->
-  <!-- <month-view /> -->
-  <!-- <year-view /> -->
+  <day-view v-if='views[0].isActive' />
+  <week-view v-if='views[1].isActive' />
+  <month-view v-if='views[2].isActive' />
+  <year-view v-if='views[3].isActive' />
 </section>
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import CalendarPlaneHeader from './components/CalendarPlaneHeader.vue';
-// import DayView from './views/Day.vue';
-// import MonthView from './views/Month.vue';
+import DayView from './views/Day.vue';
+import MonthView from './views/Month.vue';
 import SideMenu from './components/side_menu/SideMenu.vue';
-// import WeekView from './views/Week.vue';
-// import YearView from './views/Year.vue';
+import WeekView from './views/Week.vue';
+import YearView from './views/Year.vue';
 
 export default {
   components: {
     CalendarPlaneHeader,
-    // DayView,
-    // MonthView,
+    DayView,
+    MonthView,
     SideMenu,
-    // WeekView,
-    // YearView,
+    WeekView,
+    YearView,
+  },
+  computed: {
+    ...mapState(['views']),
   },
 };
 </script>
