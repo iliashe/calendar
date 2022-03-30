@@ -4,13 +4,25 @@
     <thead class=''>
       <tr class='grid grid-cols-8 w-full'>
         <th class=''></th>
-        <th v-for='day in daysOfWeek' :key='day'>{{ day.shortName }}</th>
+        <th
+          class='border border-slate-600'
+          v-for='day in daysOfWeek'
+          :key='day'
+        >
+          {{ day.shortName }}
+        </th>
       </tr>
     </thead>
     <tbody>
       <tr class='grid grid-cols-8 w-full' v-for='(hour, index) in 24' :key='index'>
         <td>{{ hour - 1 }} AM</td>
-        <td v-for='(cell, index) in 7' :key='index'>Cell {{cell}}</td>
+        <td
+          class='border border-slate-600'
+          v-for='(cell, index) in 7'
+          :key='index'
+        >
+          Cell {{cell}}
+        </td>
       </tr>
     </tbody>
   </table>
@@ -22,6 +34,14 @@ import { mapState } from 'vuex';
 
 export default {
   name: 'week-view',
+  data() {
+    return {
+      tb: document.getElementsByTagName('tbody'),
+    };
+  },
+  mounted() {
+    this.tb[0].scrollTop = 100;
+  },
   computed: {
     ...mapState(['daysOfWeek']),
   },
