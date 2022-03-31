@@ -1,7 +1,7 @@
 <template>
 <header>
   <div class='select-month'>
-    <button type='button' @click='updateCurrMonth(currMonth.id - 1)'>
+    <button type='button' @click.prevent='updateCurrMonth(currMonth.numOfMonth - 1)'>
       &larr;
     </button>
     <select
@@ -16,20 +16,15 @@
         {{ month.fullName }}
       </option>
     </select>
-    <button type='button' @click='updateCurrMonth(currMonth.id + 1)'>
+    <button type='button' @click.prevent='updateCurrMonth(currMonth.numOfMonth + 1)'>
       &rarr;
     </button>
   </div>
   <div class='select-year'>
     <!-- add validation -->
-    <label for='year'>
-      <input
-        id='year'
-        type='number'
-        v-model='currYear'
-        @change='updateCurrYear(currYear)'
-      />
-    </label>
+    <p>{{ currYear }}</p>
+    <button @click.prevent='updateCurrYear(currYear + 1)'>&uarr;</button>
+    <button @click.prevent='updateCurrYear(currYear - 1)'>&darr;</button>
   </div>
 </header>
 <body>

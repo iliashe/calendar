@@ -3,13 +3,13 @@ const getActiveView = (state) => (
 );
 
 const getDaysInMonth = (state) => (
-  new Date(state.currYear, state.currMonth.id + 1, 0).getDate()
+  new Date(state.currYear, state.currMonth.numOfMonth + 1, 0).getDate()
 );
 
 const getFirstDayOfMonth = (state) => (
-  (new Date(state.currYear, state.currMonth.id).getDay() === 0
+  (new Date(state.currYear, state.currMonth.numOfMonth).getDay() === 0
     ? 7
-    : new Date(state.currYear, state.currMonth.id).getDay())
+    : new Date(state.currYear, state.currMonth.numOfMonth).getDay())
 );
 
 export default {

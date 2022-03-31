@@ -2,21 +2,38 @@ import { createStore } from 'vuex';
 import getters from './getters';
 import mutations from './mutations';
 
+// default values
+
+const currentDate = new Date().getDate();
+// expected 1/2/3/.../31
+
+const currentDayFullName = new Intl.DateTimeFormat('en-US', { weekday: 'long' }).format(new Date());
+// expected 'Monday'/'Tuesday'/'Wednesday'/.../'Sunday'
+
+const currentMonthFullName = new Intl.DateTimeFormat('en-US', { month: 'long' }).format(new Date());
+// expected 'January'/'February'/'March'/.../'December'
+
+const currentYear = new Date().getFullYear();
+// expected .../2022/2023/2024/...
+
+const numberOfMonth = new Date().getMonth() + 1;
+// expected 1/2/3/.../12
+
 export default createStore({
   state: {
     currDay: {
-      date: new Date().getDate(),
-      fullName: new Intl.DateTimeFormat('en-US', { weekday: 'long' }).format(new Date()),
-      shortName: new Intl.DateTimeFormat('en-US', { weekday: 'short' }).format(new Date()),
+      date: currentDate,
+      fullName: currentDayFullName,
+      shortName: currentDayFullName.slice(0, 3),
     },
     currMonth: {
-      fullName: new Intl.DateTimeFormat('en-US', { month: 'long' }).format(new Date()),
-      id: new Date().getMonth(),
-      shortName: new Intl.DateTimeFormat('en-US', { month: 'short' }).format(new Date()),
+      fullName: currentMonthFullName,
+      numOfMonth: numberOfMonth,
+      shortName: currentMonthFullName.slice(0, 3),
       startsOn: 0,
     },
     currWeek: 0,
-    currYear: new Date().getFullYear(),
+    currYear: currentYear,
 
     daysOfWeek: [
       {
@@ -53,7 +70,7 @@ export default createStore({
       {
         daysInMonth: 31,
         fullName: 'January',
-        id: 0,
+        numOfMonth: 1,
         shortName: 'Jan',
         startsOn: 0,
       },
@@ -61,77 +78,77 @@ export default createStore({
       {
         daysInMonth: 28, // mutate????
         fullName: 'February',
-        id: 1,
+        numOfMonth: 2,
         shortName: 'Feb',
       },
 
       {
         daysInMonth: 31,
         fullName: 'March',
-        id: 2,
+        numOfMonth: 3,
         shortName: 'Mar',
       },
 
       {
         daysInMonth: 30,
         fullName: 'April',
-        id: 3,
+        numOfMonth: 4,
         shortName: 'Apr',
       },
 
       {
         daysInMonth: 31,
         fullName: 'May',
-        id: 4,
+        numOfMonth: 5,
         shortName: 'May',
       },
 
       {
         daysInMonth: 30,
         fullName: 'June',
-        id: 5,
+        numOfMonth: 6,
         shortName: 'Jun',
       },
 
       {
         daysInMonth: 31,
         fullName: 'July',
-        id: 6,
+        numOfMonth: 7,
         shortName: 'Jul',
       },
 
       {
         daysInMonth: 31,
         fullName: 'August',
-        id: 7,
+        numOfMonth: 8,
         shortName: 'Aug',
       },
 
       {
         daysInMonth: 30,
         fullName: 'September',
-        id: 8,
+        numOfMonth: 9,
         shortName: 'Sep',
       },
 
       {
         daysInMonth: 31,
         fullName: 'October',
-        id: 9,
+        numOfMonth: 10,
         shortName: 'Oct',
       },
 
       {
         daysInMonth: 30,
         fullName: 'November',
-        id: 10,
+        numOfMonth: 11,
         shortName: 'Nov',
       },
 
       {
         daysInMonth: 31,
         fullName: 'December',
-        id: 11,
+        numOfMonth: 12,
         shortName: 'Dec',
       },
     ],
