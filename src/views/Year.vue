@@ -1,29 +1,27 @@
 <template>
-<div>
+<div class='container'>
   <ul class='grid grid-cols-3'>
-    <li><mini-calendar /></li>
-    <li><mini-calendar /></li>
-    <li><mini-calendar /></li>
-    <li><mini-calendar /></li>
-    <li><mini-calendar /></li>
-    <li><mini-calendar /></li>
-    <li><mini-calendar /></li>
-    <li><mini-calendar /></li>
-    <li><mini-calendar /></li>
-    <li><mini-calendar /></li>
-    <li><mini-calendar /></li>
-    <li><mini-calendar /></li>
+    <li
+      v-for='(month, index) in months'
+      :key='index'
+    >
+      <mini-month :month='month' :year='currYear' />
+    </li>
   </ul>
 </div>
 </template>
 
 <script>
-import MiniCalendar from '../components/side_menu/components/MiniCalendar.vue';
+import { mapState } from 'vuex';
+import MiniMonth from '../components/MiniMonth.vue';
 
 export default {
   name: 'year-view',
   components: {
-    MiniCalendar,
+    MiniMonth,
+  },
+  computed: {
+    ...mapState(['currYear', 'months']),
   },
 };
 </script>

@@ -13,6 +13,7 @@ export default createStore({
       fullName: new Intl.DateTimeFormat('en-US', { month: 'long' }).format(new Date()),
       id: new Date().getMonth(),
       shortName: new Intl.DateTimeFormat('en-US', { month: 'short' }).format(new Date()),
+      startsOn: 0,
     },
     currWeek: 0,
     currYear: new Date().getFullYear(),
@@ -54,6 +55,7 @@ export default createStore({
         fullName: 'January',
         id: 0,
         shortName: 'Jan',
+        startsOn: 0,
       },
 
       {

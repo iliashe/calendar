@@ -1,9 +1,9 @@
 <template>
 <section class='side-menu'>
-  <side-menu />
+  <side-menu v-if='views[0].isActive || views[1].isActive' />
 </section>
 <section class='calendar-plane flex-1 flex-col'>
-  <calendar-plane-header/>
+  <calendar-plane-header />
   <day-view v-if='views[0].isActive' />
   <week-view v-if='views[1].isActive' />
   <month-view v-if='views[2].isActive' />

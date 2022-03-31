@@ -36,11 +36,12 @@ export default {
   name: 'week-view',
   data() {
     return {
-      tb: document.getElementsByTagName('tbody'),
+      tbody: document.getElementsByTagName('tbody'),
     };
   },
   mounted() {
-    this.tb[0].scrollTop = 100;
+    // scrollTop = currTime
+    this.tbody[0].scrollTop = 100;
   },
   computed: {
     ...mapState(['daysOfWeek']),
