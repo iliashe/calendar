@@ -21,7 +21,10 @@ export default {
     MiniMonth,
   },
   computed: {
-    ...mapState(['currYear', 'months']),
+    ...mapState([
+      'currYear',
+      'months',
+    ]),
   },
 };
 </script>

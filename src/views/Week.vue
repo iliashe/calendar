@@ -6,7 +6,7 @@
         <th class=''></th>
         <th
           class='border border-slate-600'
-          v-for='day in daysOfWeek'
+          v-for='day in weekdays'
           :key='day'
         >
           {{ day.shortName }}
@@ -44,7 +44,7 @@ export default {
     this.tbody[0].scrollTop = 100;
   },
   computed: {
-    ...mapState(['daysOfWeek']),
+    ...mapState(['weekdays']),
   },
 };
 </script>

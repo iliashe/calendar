@@ -1,9 +1,24 @@
 <template>
 <div class='calendar-plane-header flex flex-row justify-around'>
-  <div class='move flex flex-row'>
-    <button type='button'>&larr;</button>
-    <p>{{ getActiveView.name }} #</p>
-    <button type='button'>&rarr;</button>
+  <div class='move flex flex-row' v-if='views[0].isActive'>
+    <button type='button' @click.prevent='updateCurrDay(currDay.date - 1)'>&larr;</button>
+    <p>{{ views[0].name }} {{ currDay.date }}</p>
+    <button type='button' @click.prevent='updateCurrDay(currDay.date + 1)'>&rarr;</button>
+  </div>
+  <div class='move flex flex-row' v-if='views[1].isActive'>
+    <button type='button' @click.prevent='updateCurrWeek(currWeek - 1)'>&larr;</button>
+    <p>{{ views[1].name }} {{ currWeek }}</p>
+    <button type='button' @click.prevent='updateCurrWeek(currWeek + 1)'>&rarr;</button>
+  </div>
+  <div class='move flex flex-row' v-if='views[2].isActive'>
+    <button type='button' @click.prevent='updateCurrMonth(currMonth.numOfMonth - 1)'>&larr;</button>
+    <p>{{ views[2].name }} {{ currMonth.numOfMonth }}</p>
+    <button type='button' @click.prevent='updateCurrMonth(currMonth.numOfMonth + 1)'>&rarr;</button>
+  </div>
+  <div class='move flex flex-row' v-if='views[3].isActive'>
+    <button type='button' @click.prevent='updateCurrYear(currYear - 1)'>&larr;</button>
+    <p>{{ views[3].name }} {{ currYear }}</p>
+    <button type='button' @click.prevent='updateCurrYear(currYear + 1)'>&rarr;</button>
   </div>
   <div class='toggle-view flex flex-row justify-around'>
     <button
@@ -26,14 +41,6 @@
 import { mapGetters, mapMutations, mapState } from 'vuex';
 
 export default {
-  data() {
-    return {
-      day: 'day',
-      month: 'month',
-      week: 'week',
-      year: 'year',
-    };
-  },
   computed: {
     ...mapGetters([
       'getActiveView',
@@ -47,7 +54,13 @@ export default {
     ]),
   },
   methods: {
-    ...mapMutations(['toggleView']),
+    ...mapMutations([
+      'toggleView',
+      'updateCurrDay',
+      'updateCurrMonth',
+      'updateCurrWeek',
+      'updateCurrYear',
+    ]),
   },
 };
 </script>

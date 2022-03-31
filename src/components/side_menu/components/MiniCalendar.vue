@@ -29,7 +29,7 @@
 </header>
 <body>
   <ul class='grid grid-cols-7 gap-5'>
-    <li v-for='day in daysOfWeek' :key='day'>
+    <li v-for='day in weekdays' :key='day'>
       {{ day.shortName }}
     </li>
   </ul>
@@ -37,9 +37,9 @@
     <li v-for='cell in 42' :key='cell'>
       <button
         type='button'
-        v-if='cell >= getFirstDayOfMonth && cell < getDaysInMonth + getFirstDayOfMonth'
+        v-if='cell >= getFirstDayOfCurrMonth && cell < getDaysInMonth + getFirstDayOfCurrMonth'
       >
-        {{ cell - getFirstDayOfMonth + 1}}
+        {{ cell - getFirstDayOfCurrMonth + 1}}
       </button>
     </li>
   </ul>
@@ -53,12 +53,12 @@ export default {
   computed: {
     ...mapGetters([
       'getDaysInMonth',
-      'getFirstDayOfMonth',
+      'getFirstDayOfCurrMonth',
     ]),
     ...mapState([
       'currMonth',
       'currYear',
-      'daysOfWeek',
+      'weekdays',
       'months',
     ]),
   },

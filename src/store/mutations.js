@@ -6,7 +6,12 @@ const toggleView = function (state, activeCalendarView) {
     } else {
       view.isActive = false;
     }
-  }
+  };
+};
+
+// what if day > 31
+const updateCurrDay = function (state, date) {
+  state.currDay.date = date;
 };
 
 const updateCurrMonth = function (state, month) {
@@ -17,20 +22,24 @@ const updateCurrMonth = function (state, month) {
       : month > 12
         ? state.months.filter((el) => el.numOfMonth === 1)[0]
         : state.months.filter((el) => el.numOfMonth === 12)[0])
+  state.currMonth.daysInMonth = getMonth.daysInMonth;
   state.currMonth.fullName = getMonth.fullName;
   state.currMonth.numOfMonth = getMonth.numOfMonth;
   state.currMonth.shortName = getMonth.shortName;
 };
 
-const updateCurrYear = function (state, y) {
-  console.log(typeof(state.currYear), y)
-  state.currYear = y;
-  state.currWeek = 9999;
-  console.log('currYear updated!')
+const updateCurrWeek = function (state, weekNumber) {
+  state.currWeek = weekNumber
+};
+
+const updateCurrYear = function (state, year) {
+  state.currYear = year;
 };
 
 export default {
   toggleView,
+  updateCurrDay,
   updateCurrMonth,
+  updateCurrWeek,
   updateCurrYear,
 };

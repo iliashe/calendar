@@ -6,7 +6,7 @@
 </header>
 <body>
   <ul class='grid grid-cols-7 gap-5'>
-    <li v-for='day in daysOfWeek' :key='day'>
+    <li v-for='day in weekdays' :key='day'>
       {{ day.shortName }}
     </li>
   </ul>
@@ -14,10 +14,10 @@
     <li v-for='cell in 42' :key='cell'>
       <button
         type='button'
-        v-if='cell >= getFirstDayOfMonth(month.id) &&
-        cell < getDaysInMonth(month.id) + getFirstDayOfMonth(month.id)'
+        v-if='cell >= getFirstDayOfMonth &&
+        cell < month.daysInMonth + getFirstDayOfMonth'
       >
-        {{ cell - getFirstDayOfMonth(month.id) + 1}}
+        {{ cell - getFirstDayOfMonth + 1}}
       </button>
     </li>
   </ul>
@@ -29,22 +29,19 @@ import { mapMutations, mapState } from 'vuex';
 
 export default {
   computed: {
+    getFirstDayOfMonth() {
+      return new Date(this.year, this.month.numOfMonth).getDay() === 0
+        ? 7
+        : new Date(this.year, this.month.numOfMonth).getDay();
+    },
     ...mapState([
       'currMonth',
       'currYear',
-      'daysOfWeek',
       'months',
+      'weekdays',
     ]),
   },
   methods: {
-    getDaysInMonth(month, year = this.year) {
-      return new Date(year, month + 1, 0).getDate();
-    },
-    getFirstDayOfMonth(month, year = this.year) {
-      return new Date(year, month).getDay() === 0
-        ? 7
-        : new Date(year, month).getDay();
-    },
     ...mapMutations([
       'updateCurrMonth',
       'updateCurrYear',

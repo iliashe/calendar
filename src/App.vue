@@ -6,7 +6,7 @@
   <calendar-plane-header />
   <day-view v-if='views[0].isActive' />
   <week-view v-if='views[1].isActive' />
-  <month-view v-if='views[2].isActive' />
+  <month-view v-if='views[2].isActive' :currMonth='currMonth' />
   <year-view v-if='views[3].isActive' />
 </section>
 </template>
@@ -30,7 +30,7 @@ export default {
     YearView,
   },
   computed: {
-    ...mapState(['views']),
+    ...mapState(['currMonth', 'views']),
   },
 };
 </script>

@@ -19,6 +19,9 @@ const currentYear = new Date().getFullYear();
 const numberOfMonth = new Date().getMonth() + 1;
 // expected 1/2/3/.../12
 
+const daysInCurrentMonth = new Date(currentYear, numberOfMonth, 0).getDate();
+// expected 28/29/30/31
+
 export default createStore({
   state: {
     currDay: {
@@ -27,6 +30,7 @@ export default createStore({
       shortName: currentDayFullName.slice(0, 3),
     },
     currMonth: {
+      daysInMonth: daysInCurrentMonth,
       fullName: currentMonthFullName,
       numOfMonth: numberOfMonth,
       shortName: currentMonthFullName.slice(0, 3),
@@ -35,7 +39,7 @@ export default createStore({
     currWeek: 0,
     currYear: currentYear,
 
-    daysOfWeek: [
+    weekdays: [
       {
         fullName: 'Monday',
         shortName: 'Mon',
