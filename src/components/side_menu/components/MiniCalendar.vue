@@ -4,6 +4,7 @@
     <button type='button' @click.prevent='updateCurrMonth(currMonth.numOfMonth - 1)'>
       &larr;
     </button>
+    <!-- currMonth.numOfMonth would be better??? -->
     <select
       v-model='currMonth.fullName'
       @change='updateCurrMonth(currMonth.fullName)'
