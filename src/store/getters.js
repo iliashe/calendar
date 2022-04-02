@@ -7,9 +7,9 @@ const getDaysInMonth = (state) => (
 );
 
 const getFirstDayOfCurrMonth = (state) => (
-  (new Date(state.currYear, state.currMonth.numOfMonth).getDay() === 0
+  (new Date(state.currYear, state.currMonth.numOfMonth - 1).getDay() === 0
     ? 7
-    : new Date(state.currYear, state.currMonth.numOfMonth).getDay())
+    : new Date(state.currYear, state.currMonth.numOfMonth - 1).getDay())
 );
 
 export default {

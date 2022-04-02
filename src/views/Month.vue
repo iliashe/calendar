@@ -17,6 +17,7 @@
         <input
           :id="'btn' + cell"
           :type='select'
+          @change='addToSelectedDays(currMonth.daysOfCurrMonth[cell - getFirstDayOfCurrMonth])'
         >
         {{ cell - getFirstDayOfCurrMonth + 1}}
       </label>
@@ -26,7 +27,7 @@
 </template>
 
 <script>
-import { mapGetters, mapState } from 'vuex';
+import { mapGetters, mapState, mapMutations } from 'vuex';
 
 export default {
   name: 'month-view',
@@ -38,6 +39,11 @@ export default {
     ...mapState([
       'select',
       'weekdays',
+    ]),
+  },
+  methods: {
+    ...mapMutations([
+      'addToSelectedDays',
     ]),
   },
   props: {

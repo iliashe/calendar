@@ -22,6 +22,15 @@ const numberOfMonth = new Date().getMonth() + 1;
 const daysInCurrentMonth = new Date(currentYear, numberOfMonth, 0).getDate();
 // expected 28/29/30/31
 
+const daysOfCurrentMonth = [];
+for (let day = 1; day <= daysInCurrentMonth; day += 1) {
+  daysOfCurrentMonth.push({
+    date: day,
+    fullName: new Intl.DateTimeFormat('en-US', { weekday: 'long' }).format(new Date(currentYear, numberOfMonth - 1, day)),
+    shortName: new Intl.DateTimeFormat('en-US', { weekday: 'short' }).format(new Date(currentYear, numberOfMonth - 1, day)),
+  });
+}
+
 export default createStore({
   state: {
     currDay: {
@@ -31,6 +40,7 @@ export default createStore({
     },
     currMonth: {
       daysInMonth: daysInCurrentMonth,
+      daysOfCurrMonth: daysOfCurrentMonth,
       fullName: currentMonthFullName,
       numOfMonth: numberOfMonth,
       shortName: currentMonthFullName.slice(0, 3),
@@ -128,6 +138,8 @@ export default createStore({
 
     // select-button in header of a calendar plane
     select: 'button',
+
+    selectedDays: [],
 
     views: [
       {

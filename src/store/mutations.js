@@ -1,3 +1,13 @@
+const addToSelectedDays = function (state, day) {
+  if (state.selectedDays.includes(day)) {
+    console.log(day);
+    console.log(state.selectedDays.filter((el) => el.date !== day.date));
+    state.selectedDays = state.selectedDays.filter((el) => el.date !== day.date);
+  } else {
+    state.selectedDays.push(day);
+  }
+};
+
 /* eslint-disable */
 const toggleSelect = function (state) {
   state.select === 'button'
@@ -57,6 +67,15 @@ const updateCurrMonth = function (state, month) {
         : state.months.filter((el) => el.numOfMonth === 12)[0])
   // February has 28/29 days
   state.currMonth.daysInMonth = getMonth.daysInMonth;
+  state.currMonth.daysOfCurrMonth.length = 0;
+  for (let day = 1; day <= getMonth.daysInMonth; day += 1) {
+    console.log('day =', day, 'current Month =', getMonth.numOfMonth, new Intl.DateTimeFormat('en-US', { weekday: 'long' }).format(new Date(state.currYear, getMonth.numOfMonth - 1, day)))
+    state.currMonth.daysOfCurrMonth.push({
+      date: day,
+      fullName: new Intl.DateTimeFormat('en-US', { weekday: 'long' }).format(new Date(state.currYear, getMonth.numOfMonth - 1, day)),
+      shortName: new Intl.DateTimeFormat('en-US', { weekday: 'short' }).format(new Date(state.currYear, getMonth.numOfMonth - 1, day)),
+    });
+  }
   state.currMonth.fullName = getMonth.fullName;
   state.currMonth.numOfMonth = getMonth.numOfMonth;
   state.currMonth.shortName = getMonth.shortName;
@@ -71,6 +90,7 @@ const updateCurrYear = function (state, year) {
 };
 
 export default {
+  addToSelectedDays,
   toggleSelect,
   toggleView,
   updateCurrDay,
