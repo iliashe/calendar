@@ -1,8 +1,8 @@
 <template>
-<section class='side-menu'>
-  <side-menu v-if='views[0].isActive || views[1].isActive' />
+<section class='side-menu' v-if='views[0].isActive || views[1].isActive'>
+  <side-menu />
 </section>
-<section class='calendar-plane flex-1 flex-col'>
+<section class='container calendar-plane flex-1 flex-col'>
   <calendar-plane-header />
   <day-view v-if='views[0].isActive' />
   <week-view v-if='views[1].isActive' />
@@ -38,6 +38,7 @@ export default {
 <style lang="scss">
 #app{
     display: flex;
+    height: 1800px;
 }
 
 .calendar-plane {

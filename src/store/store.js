@@ -39,37 +39,6 @@ export default createStore({
     currWeek: 0,
     currYear: currentYear,
 
-    weekdays: [
-      {
-        fullName: 'Monday',
-        shortName: 'Mon',
-      },
-      {
-        fullName: 'Tuesday',
-        shortName: 'Tue',
-      },
-      {
-        fullName: 'Wednesday',
-        shortName: 'Wed',
-      },
-      {
-        fullName: 'Thursday',
-        shortName: 'Thu',
-      },
-      {
-        fullName: 'Friday',
-        shortName: 'Fri',
-      },
-      {
-        fullName: 'Saturday',
-        shortName: 'Sat',
-      },
-      {
-        fullName: 'Sunday',
-        shortName: 'Sun',
-      },
-    ],
-
     months: [
       {
         daysInMonth: 31,
@@ -157,6 +126,9 @@ export default createStore({
       },
     ],
 
+    // select-button in header of a calendar plane
+    select: 'button',
+
     views: [
       {
         name: 'Day',
@@ -173,6 +145,37 @@ export default createStore({
       {
         name: 'Year',
         isActive: false,
+      },
+    ],
+
+    weekdays: [
+      {
+        fullName: 'Monday',
+        shortName: 'Mon',
+      },
+      {
+        fullName: 'Tuesday',
+        shortName: 'Tue',
+      },
+      {
+        fullName: 'Wednesday',
+        shortName: 'Wed',
+      },
+      {
+        fullName: 'Thursday',
+        shortName: 'Thu',
+      },
+      {
+        fullName: 'Friday',
+        shortName: 'Fri',
+      },
+      {
+        fullName: 'Saturday',
+        shortName: 'Sat',
+      },
+      {
+        fullName: 'Sunday',
+        shortName: 'Sun',
       },
     ],
   },

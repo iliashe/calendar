@@ -1,4 +1,10 @@
 /* eslint-disable */
+const toggleSelect = function (state) {
+  state.select === 'button'
+    ? state.select = 'checkbox'
+    : state.select = 'button';
+};
+
 const toggleView = function (state, activeCalendarView) {
   for(const view of state.views){
     if(view.name === activeCalendarView){
@@ -10,6 +16,7 @@ const toggleView = function (state, activeCalendarView) {
 };
 
 const updateCurrDay = function (state, date) {
+  // DO WE NEED THIS?
   // checking if date is the number in range between 1 and number of days in current month
   // if true, we updating a current day with date
   // else if date is not in range, this means we have to move either to next or previous month 
@@ -48,6 +55,7 @@ const updateCurrMonth = function (state, month) {
       : month > 12
         ? state.months.filter((el) => el.numOfMonth === 1)[0]
         : state.months.filter((el) => el.numOfMonth === 12)[0])
+  // February has 28/29 days
   state.currMonth.daysInMonth = getMonth.daysInMonth;
   state.currMonth.fullName = getMonth.fullName;
   state.currMonth.numOfMonth = getMonth.numOfMonth;
@@ -63,6 +71,7 @@ const updateCurrYear = function (state, year) {
 };
 
 export default {
+  toggleSelect,
   toggleView,
   updateCurrDay,
   updateCurrMonth,

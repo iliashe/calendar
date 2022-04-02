@@ -8,14 +8,18 @@
       {{day.fullName}}
     </li>
   </ul>
-  <ul class='grid grid-cols-7 gap-5'>
-    <li v-for='cell in 42' :key='cell'>
-      <button
-        type='button'
+  <ul class='base grid grid-cols-7 gap-5'>
+    <li class='date-cell' v-for='cell in 42' :key='cell'>
+      <label
+        :for="'btn' + cell"
         v-if='cell >= getFirstDayOfCurrMonth && cell < getDaysInMonth + getFirstDayOfCurrMonth'
       >
+        <input
+          :id="'btn' + cell"
+          :type='select'
+        >
         {{ cell - getFirstDayOfCurrMonth + 1}}
-      </button>
+      </label>
     </li>
   </ul>
 </div>
@@ -31,10 +35,27 @@ export default {
       'getDaysInMonth',
       'getFirstDayOfCurrMonth',
     ]),
-    ...mapState(['weekdays']),
+    ...mapState([
+      'select',
+      'weekdays',
+    ]),
   },
   props: {
     currMonth: Object,
   },
 };
 </script>
+
+<style scoped>
+.date-cell {
+  background-color: beige;
+}
+
+.base {
+  height: 600px;
+}
+
+div {
+  height: 100%;
+}
+</style>

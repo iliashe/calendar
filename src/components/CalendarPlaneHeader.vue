@@ -1,5 +1,6 @@
 <template>
 <div class='calendar-plane-header flex flex-row justify-around'>
+  <!-- MAKE A LOOP HERE -->
   <div class='move flex flex-row' v-if='views[0].isActive'>
     <button type='button' @click.prevent='updateCurrDay(currDay.date - 1)'>&larr;</button>
     <p>{{ views[0].name }} {{ currDay.date }}</p>
@@ -34,6 +35,9 @@
     <input placeholder='search'/>
     <p>img</p>
   </div>
+  <div class='select-button'>
+    <button @click='toggleSelect'>SELECT</button>
+  </div>
 </div>
 </template>
 
@@ -55,6 +59,7 @@ export default {
   },
   methods: {
     ...mapMutations([
+      'toggleSelect',
       'toggleView',
       'updateCurrDay',
       'updateCurrMonth',
