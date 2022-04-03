@@ -13,7 +13,7 @@
 
 <script>
 import { mapState } from 'vuex';
-import MiniMonth from '../components/MiniMonth.vue';
+import MiniMonth from '../components/year_view/MiniMonth.vue';
 
 export default {
   name: 'year-view',

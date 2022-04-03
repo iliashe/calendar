@@ -1,5 +1,5 @@
 <template>
-<section class='side-menu' v-if='views[0].isActive || views[1].isActive'>
+<section class='side-menu'>
   <side-menu />
 </section>
 <section class='container calendar-plane flex-1 flex-col'>
@@ -51,5 +51,6 @@ main {
 
 .side-menu {
   background-color: #808080;
+  width: 300px;
 }
 </style>

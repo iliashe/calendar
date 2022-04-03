@@ -38,6 +38,7 @@
   <div class='select-button'>
     <button @click='toggleSelect'>SELECT</button>
   </div>
+  <button>CREATE +</button>
 </div>
 </template>
 
