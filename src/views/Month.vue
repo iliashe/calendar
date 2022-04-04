@@ -23,20 +23,28 @@
       </label>
     </li>
   </ul>
+  <div class='evf' v-if='createEventForm.isVisible'>
+    <event-form />
+  </div>
 </div>
 </template>
 
 <script>
 import { mapGetters, mapState, mapMutations } from 'vuex';
+import EventForm from '../components/EventForm.vue';
 
 export default {
   name: 'month-view',
+  components: {
+    EventForm,
+  },
   computed: {
     ...mapGetters([
       'getDaysInMonth',
       'getFirstDayOfCurrMonth',
     ]),
     ...mapState([
+      'createEventForm',
       'select',
       'weekdays',
     ]),
@@ -53,12 +61,19 @@ export default {
 </script>
 
 <style scoped>
+.base {
+  height: 600px;
+}
+
 .date-cell {
   background-color: beige;
 }
 
-.base {
-  height: 600px;
+.evf {
+  background-color: #6495ED;
+  top: 50px;
+  position: absolute;
+  z-index: 50;
 }
 
 div {

@@ -56,6 +56,10 @@ export default createStore({
     currWeek: 0,
     currYear: currentYear,
 
+    createEventForm: {
+      isVisible: false,
+    },
+
     months: [
       {
         daysInMonth: 31,

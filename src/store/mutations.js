@@ -9,6 +9,10 @@ const addToSelectedDays = function (state, day) {
 };
 
 /* eslint-disable */
+const createEvent = function (state) {
+  
+};
+
 const toggleSelect = function (state) {
   state.select === 'button'
     ? state.select = 'checkbox'
