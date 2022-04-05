@@ -9,8 +9,19 @@ const addToSelectedDays = function (state, day) {
 };
 
 /* eslint-disable */
-const createEvent = function (state) {
-  
+const commitEvent = function (state, event) {
+  console.log('state.selectedDays :', state.selectedDays, typeof(state.selectedDays));
+  console.log(state.selectedDays[0])
+  for(let day of state.selectedDays){
+    console.log(day);
+    day.events.push(event);
+  };
+};
+
+
+// create button
+const  toggleEvent = function (state) {
+  state.createEventForm.isVisible = !state.createEventForm.isVisible;
 };
 
 const toggleSelect = function (state) {
@@ -95,6 +106,8 @@ const updateCurrYear = function (state, year) {
 
 export default {
   addToSelectedDays,
+  commitEvent,
+  toggleEvent,
   toggleSelect,
   toggleView,
   updateCurrDay,

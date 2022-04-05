@@ -31,7 +31,7 @@ for (let day = 1; day <= daysInCurrentMonth; day += 1) {
   daysOfCurrentMonth.push({
     configs: dayConfigs,
     date: day,
-    events: {},
+    events: [],
     fullName: new Intl.DateTimeFormat('en-US', { weekday: 'long' }).format(new Date(currentYear, numberOfMonth - 1, day)),
     shortName: new Intl.DateTimeFormat('en-US', { weekday: 'short' }).format(new Date(currentYear, numberOfMonth - 1, day)),
   });
@@ -58,6 +58,11 @@ export default createStore({
 
     createEventForm: {
       isVisible: false,
+    },
+
+    Event: {
+      desc: '',
+      name: '',
     },
 
     months: [

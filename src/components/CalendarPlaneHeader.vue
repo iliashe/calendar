@@ -38,7 +38,7 @@
   <div class='select-button'>
     <button @click='toggleSelect'>SELECT</button>
   </div>
-  <button @click='createEventForm.isVisible=true'>CREATE +</button>
+  <button @click='toggleEvent()'>CREATE +</button>
 </div>
 </template>
 
@@ -62,6 +62,7 @@ export default {
   methods: {
     ...mapMutations([
       'createEvent',
+      'toggleEvent',
       'toggleSelect',
       'toggleView',
       'updateCurrDay',
