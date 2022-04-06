@@ -1,7 +1,5 @@
 const addToSelectedDays = function (state, day) {
   if (state.selectedDays.includes(day)) {
-    console.log(day);
-    console.log(state.selectedDays.filter((el) => el.date !== day.date));
     state.selectedDays = state.selectedDays.filter((el) => el.date !== day.date);
   } else {
     state.selectedDays.push(day);
@@ -9,12 +7,13 @@ const addToSelectedDays = function (state, day) {
 };
 
 /* eslint-disable */
-const commitEvent = function (state, event) {
-  console.log('state.selectedDays :', state.selectedDays, typeof(state.selectedDays));
-  console.log(state.selectedDays[0])
-  for(let day of state.selectedDays){
-    console.log(day);
-    day.events.push(event);
+// it is pushed to the days of curr month too
+const commitEvent = function (state, _event) {
+  for(const day of state.selectedDays){
+    for(const event of day.events) {
+      event.name = _event.name
+      event.desc = _event.desc
+    };
   };
 };
 

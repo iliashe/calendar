@@ -20,6 +20,9 @@
           @change='addToSelectedDays(currMonth.daysOfCurrMonth[cell - getFirstDayOfCurrMonth])'
         >
         {{ cell - getFirstDayOfCurrMonth + 1}}
+        <div class='ev'>
+          {{ currMonth.daysOfCurrMonth[cell - getFirstDayOfCurrMonth].events[0].name }}
+        </div>
       </label>
     </li>
   </ul>
