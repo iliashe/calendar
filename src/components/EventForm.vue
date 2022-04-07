@@ -1,14 +1,16 @@
 <template>
 <div class='container'>
   <div class='form'>
-    <button @click.prevent='commitEvent(Event)'>SAVE</button>
+    <button @click.prevent='commitEvent(events[events.length - 1])'>SAVE</button>
     <div class=''>
       <label for='name'>Events' name
-      <input id='name' v-model='Event.name' /></label>
+      <input id='name' v-model='events[events.length - 1].name' /></label>
     </div>
     <div class=''>
       <label for='desc'>Events' description
-      <textarea name='desc' id='desc' rows='5' cols='33' v-model='Event.desc'></textarea></label>
+        <textarea name='desc' id='desc' rows='5' cols='33' v-model='events[events.length - 1].desc'>
+        </textarea>
+      </label>
     </div>
   </div>
 </div>
@@ -20,7 +22,7 @@ import { mapMutations, mapState } from 'vuex';
 export default {
   computed: {
     ...mapState([
-      'Event',
+      'events',
     ]),
   },
   methods: {

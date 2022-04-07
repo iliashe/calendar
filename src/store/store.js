@@ -28,16 +28,15 @@ const daysInCurrentMonth = new Date(currentYear, numberOfMonth, 0).getDate();
 
 const daysOfCurrentMonth = [];
 for (let day = 1; day <= daysInCurrentMonth; day += 1) {
-  daysOfCurrentMonth.push({
-    configs: dayConfigs,
-    date: day,
-    events: [{
-      desc: '',
-      name: '',
-    }],
-    fullName: new Intl.DateTimeFormat('en-US', { weekday: 'long' }).format(new Date(currentYear, numberOfMonth - 1, day)),
-    shortName: new Intl.DateTimeFormat('en-US', { weekday: 'short' }).format(new Date(currentYear, numberOfMonth - 1, day)),
-  });
+  daysOfCurrentMonth.push(
+    {
+      configs: dayConfigs,
+      date: day,
+      events: [],
+      fullName: new Intl.DateTimeFormat('en-US', { weekday: 'long' }).format(new Date(currentYear, numberOfMonth - 1, day)),
+      shortName: new Intl.DateTimeFormat('en-US', { weekday: 'short' }).format(new Date(currentYear, numberOfMonth - 1, day)),
+    },
+  );
 }
 // expected [{day1},{day2},{day3}...]
 
@@ -63,10 +62,8 @@ export default createStore({
       isVisible: false,
     },
 
-    Event: {
-      desc: '',
-      name: '',
-    },
+    events: [
+    ],
 
     months: [
       {

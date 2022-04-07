@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class='mo'>
   <ul class='grid grid-cols-7 gap-5'>
     <li
       v-for='(day, index) in weekdays'
@@ -19,9 +19,13 @@
           :type='select'
           @change='addToSelectedDays(currMonth.daysOfCurrMonth[cell - getFirstDayOfCurrMonth])'
         >
-        {{ cell - getFirstDayOfCurrMonth + 1}}
-        <div class='ev'>
-          {{ currMonth.daysOfCurrMonth[cell - getFirstDayOfCurrMonth].events[0].name }}
+        {{ cell - getFirstDayOfCurrMonth + 1 }}
+        <div
+          class='ev'
+          v-for='event of currMonth.daysOfCurrMonth[cell - getFirstDayOfCurrMonth].events'
+          :key='event'
+        >
+          {{ event.name }}
         </div>
       </label>
     </li>
@@ -79,7 +83,7 @@ export default {
   z-index: 50;
 }
 
-div {
+.mo {
   height: 100%;
 }
 </style>

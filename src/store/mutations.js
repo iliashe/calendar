@@ -10,17 +10,24 @@ const addToSelectedDays = function (state, day) {
 // it is pushed to the days of curr month too
 const commitEvent = function (state, _event) {
   for(const day of state.selectedDays){
-    for(const event of day.events) {
-      event.name = _event.name
-      event.desc = _event.desc
-    };
+    day.events.push(_event)  
+    // for(const event of day.events) {
+    //   event.name = _event.name
+    //   event.desc = _event.desc
+    // };
   };
+  state.createEventForm.isVisible = false;
 };
 
 
 // create button
 const  toggleEvent = function (state) {
+  const event = {
+    desc: '',
+    name: '',
+  }
   state.createEventForm.isVisible = !state.createEventForm.isVisible;
+  state.events.push(event);
 };
 
 const toggleSelect = function (state) {
