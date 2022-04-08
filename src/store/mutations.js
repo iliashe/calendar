@@ -21,10 +21,18 @@ const commitEvent = function (state, _event) {
 
 
 // create button
-const  toggleEvent = function (state) {
+const  createEvent = function (state) {
   const event = {
+    configs: {
+      color: '', // color of the text
+      icon: '', 
+      type:'', // ToDo or just event
+    },
+    date: 0, // month, date, dayOfWeek
     desc: '',
     name: '',
+    startsOn: '',
+    endsOn: '',
   }
   state.createEventForm.isVisible = !state.createEventForm.isVisible;
   state.events.push(event);
@@ -113,7 +121,7 @@ const updateCurrYear = function (state, year) {
 export default {
   addToSelectedDays,
   commitEvent,
-  toggleEvent,
+  createEvent,
   toggleSelect,
   toggleView,
   updateCurrDay,
