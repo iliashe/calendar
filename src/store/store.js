@@ -23,22 +23,63 @@ const currentYear = new Date().getFullYear();
 const numberOfMonth = new Date().getMonth() + 1;
 // expected 1/2/3/.../12
 
+// const day = () => {
+//   configs: {},
+//   date: 0,
+//   events: [],
+//   isCurrent: false, ????
+//   month: '',
+//   name: '',
+//   selected: false,
+//   year: '',
+// };
+
+// const week = () => {
+//   configs: {},
+//   events: [],
+//   isCurrent: false,
+//   weekdays: [],
+//   weekNumber: 0,
+// }
+
+// const month = () => {
+//   configs: {},
+//   daysOfMonth: [],
+//   events: [],
+//   isCurrent: false, ?????
+//   name: '',
+//   numOfDays: 0,
+//   monthNumber: 0,
+// };
+
+// const year = () => {
+//  configs: {},
+//  isCurrent: true,
+//  year: 0,
+// }
+
 const daysInCurrentMonth = new Date(currentYear, numberOfMonth, 0).getDate();
 // expected 28/29/30/31
 
 const daysOfCurrentMonth = [];
-for (let day = 1; day <= daysInCurrentMonth; day += 1) {
+for (let d = 1; d <= daysInCurrentMonth; d += 1) {
   daysOfCurrentMonth.push(
     {
       configs: dayConfigs,
-      date: day,
+      date: d,
       events: [],
-      fullName: new Intl.DateTimeFormat('en-US', { weekday: 'long' }).format(new Date(currentYear, numberOfMonth - 1, day)),
-      shortName: new Intl.DateTimeFormat('en-US', { weekday: 'short' }).format(new Date(currentYear, numberOfMonth - 1, day)),
+      fullName: new Intl.DateTimeFormat('en-US', { weekday: 'long' }).format(new Date(currentYear, numberOfMonth - 1, d)),
+      shortName: new Intl.DateTimeFormat('en-US', { weekday: 'short' }).format(new Date(currentYear, numberOfMonth - 1, d)),
     },
   );
 }
 // expected [{day1},{day2},{day3}...]
+
+const months = [];
+for (let m = 1; m <= 12; m += 1) {
+  months.push({
+  });
+}
 
 export default createStore({
   state: {
@@ -68,6 +109,7 @@ export default createStore({
     months: [
       {
         daysInMonth: 31,
+        daysOfMonth: [],
         fullName: 'January',
         numOfMonth: 1,
         shortName: 'Jan',
@@ -75,7 +117,8 @@ export default createStore({
       },
 
       {
-        daysInMonth: 28, // mutate????
+        daysInMonth: currentYear % 4 === 0 ? 29 : 28, // CHECK INFO
+        daysOfMonth: [],
         fullName: 'February',
         numOfMonth: 2,
         shortName: 'Feb',
@@ -83,6 +126,7 @@ export default createStore({
 
       {
         daysInMonth: 31,
+        daysOfMonth: [],
         fullName: 'March',
         numOfMonth: 3,
         shortName: 'Mar',
@@ -90,6 +134,7 @@ export default createStore({
 
       {
         daysInMonth: 30,
+        daysOfMonth: [],
         fullName: 'April',
         numOfMonth: 4,
         shortName: 'Apr',
@@ -97,6 +142,7 @@ export default createStore({
 
       {
         daysInMonth: 31,
+        daysOfMonth: [],
         fullName: 'May',
         numOfMonth: 5,
         shortName: 'May',
@@ -104,6 +150,7 @@ export default createStore({
 
       {
         daysInMonth: 30,
+        daysOfMonth: [],
         fullName: 'June',
         numOfMonth: 6,
         shortName: 'Jun',
@@ -111,6 +158,7 @@ export default createStore({
 
       {
         daysInMonth: 31,
+        daysOfMonth: [],
         fullName: 'July',
         numOfMonth: 7,
         shortName: 'Jul',
@@ -118,6 +166,7 @@ export default createStore({
 
       {
         daysInMonth: 31,
+        daysOfMonth: [],
         fullName: 'August',
         numOfMonth: 8,
         shortName: 'Aug',
@@ -125,6 +174,7 @@ export default createStore({
 
       {
         daysInMonth: 30,
+        daysOfMonth: [],
         fullName: 'September',
         numOfMonth: 9,
         shortName: 'Sep',
@@ -132,6 +182,7 @@ export default createStore({
 
       {
         daysInMonth: 31,
+        daysOfMonth: [],
         fullName: 'October',
         numOfMonth: 10,
         shortName: 'Oct',
@@ -139,6 +190,7 @@ export default createStore({
 
       {
         daysInMonth: 30,
+        daysOfMonth: [],
         fullName: 'November',
         numOfMonth: 11,
         shortName: 'Nov',
@@ -146,6 +198,7 @@ export default createStore({
 
       {
         daysInMonth: 31,
+        daysOfMonth: [],
         fullName: 'December',
         numOfMonth: 12,
         shortName: 'Dec',

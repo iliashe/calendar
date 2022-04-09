@@ -28,12 +28,17 @@ const  createEvent = function (state) {
       icon: '', 
       type:'', // ToDo or just event
     },
-    date: 0, // month, date, dayOfWeek
+    date: {
+      dates: [],
+      months: [],
+      daysOfWeek: [],
+    }, // month, date, dayOfWeek
     desc: '',
     name: '',
     startsOn: '',
     endsOn: '',
   }
+  const eventTime = event.endsOn - event.startsOn; // milliseconds
   state.createEventForm.isVisible = !state.createEventForm.isVisible;
   state.events.push(event);
 };

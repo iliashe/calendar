@@ -1,6 +1,6 @@
 <template>
 <div class='container'>
-  <ul class='grid grid-cols-3'>
+  <ul class='grid grid-cols-3 gap-5'>
     <li
       v-for='(month, index) in months'
       :key='index'

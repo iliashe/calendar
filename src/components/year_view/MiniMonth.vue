@@ -56,6 +56,11 @@ export default {
 
 <style scoped>
 li {
+  border: solid;
   font-size: x-small;
+}
+
+ul {
+  border: solid;
 }
 </style>
