@@ -2,6 +2,41 @@ import { createStore } from 'vuex';
 import getters from './getters';
 import mutations from './mutations';
 
+// class Day {
+//   constructor(props) {
+//     this.configs = props.configs;
+//     this.dateInMonth = props.dateInMonth;
+//     this.events = props.events;
+//     this.isCurrent = props.isCurrent;
+//     this.isSelected = props.isSelected;
+//     this.month = props.month;
+//     this.name = props.name;
+//     this.year = props.year;
+//   }
+// }
+
+// class Week {
+//   constructor(props) {
+//     this.configs = props.configs;
+//     this.events = props.events;
+//     this.isCurrent = props.isCurrent;
+//     this.weekdays = props.weekdays;
+//     this.weekNumber = props.weekNumber;
+//   }
+// }
+
+// class Month {
+//   constructor(props) {
+//     this.configs = props.configs;
+//     this.daysOfMonth = props.daysOfMonth;
+//     this.events = props.events;
+//     this.isCurrent = props.isCurrent;
+//     this.name = props.name;
+//     this.numOfDays = props.numOfDays;
+//     this.monthNumber = props.monthNumber;
+//   }
+// }
+
 // default values
 
 const dayConfigs = {
@@ -22,35 +57,6 @@ const currentYear = new Date().getFullYear();
 
 const numberOfMonth = new Date().getMonth() + 1;
 // expected 1/2/3/.../12
-
-// const day = () => {
-//   configs: {},
-//   date: 0,
-//   events: [],
-//   isCurrent: false, ????
-//   month: '',
-//   name: '',
-//   selected: false,
-//   year: '',
-// };
-
-// const week = () => {
-//   configs: {},
-//   events: [],
-//   isCurrent: false,
-//   weekdays: [],
-//   weekNumber: 0,
-// }
-
-// const month = () => {
-//   configs: {},
-//   daysOfMonth: [],
-//   events: [],
-//   isCurrent: false, ?????
-//   name: '',
-//   numOfDays: 0,
-//   monthNumber: 0,
-// };
 
 // const year = () => {
 //  configs: {},
@@ -77,8 +83,7 @@ for (let d = 1; d <= daysInCurrentMonth; d += 1) {
 
 const months = [];
 for (let m = 1; m <= 12; m += 1) {
-  months.push({
-  });
+  months.push();
 }
 
 export default createStore({
