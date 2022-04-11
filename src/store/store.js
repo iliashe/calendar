@@ -1,19 +1,8 @@
 import { createStore } from 'vuex';
 import getters from './getters';
 import mutations from './mutations';
-
-// class Day {
-//   constructor(props) {
-//     this.configs = props.configs;
-//     this.dateInMonth = props.dateInMonth;
-//     this.events = props.events;
-//     this.isCurrent = props.isCurrent;
-//     this.isSelected = props.isSelected;
-//     this.month = props.month;
-//     this.name = props.name;
-//     this.year = props.year;
-//   }
-// }
+// import day from './day';
+import Month from './month';
 
 // class Week {
 //   constructor(props) {
@@ -22,18 +11,6 @@ import mutations from './mutations';
 //     this.isCurrent = props.isCurrent;
 //     this.weekdays = props.weekdays;
 //     this.weekNumber = props.weekNumber;
-//   }
-// }
-
-// class Month {
-//   constructor(props) {
-//     this.configs = props.configs;
-//     this.daysOfMonth = props.daysOfMonth;
-//     this.events = props.events;
-//     this.isCurrent = props.isCurrent;
-//     this.name = props.name;
-//     this.numOfDays = props.numOfDays;
-//     this.monthNumber = props.monthNumber;
 //   }
 // }
 
@@ -83,11 +60,21 @@ for (let d = 1; d <= daysInCurrentMonth; d += 1) {
 
 const months = [];
 for (let m = 1; m <= 12; m += 1) {
-  months.push();
+  months.push(
+    new Month({
+      configs: {},
+      events: [],
+      isCurrent: false,
+      monthNumber: m,
+      name: 'Feb',
+      numOfDays: 31,
+    }),
+  );
 }
 
 export default createStore({
   state: {
+    testm: months,
     currDay: {
       date: currentDate,
       fullName: currentDayFullName,
