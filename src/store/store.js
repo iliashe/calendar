@@ -1,24 +1,9 @@
 import { createStore } from 'vuex';
 import getters from './getters';
 import mutations from './mutations';
-// import day from './day';
-import Month from './month';
-
-// class Week {
-//   constructor(props) {
-//     this.configs = props.configs;
-//     this.events = props.events;
-//     this.isCurrent = props.isCurrent;
-//     this.weekdays = props.weekdays;
-//     this.weekNumber = props.weekNumber;
-//   }
-// }
+import Day from './day';
 
 // default values
-
-const dayConfigs = {
-  color: '',
-};
 
 const currentDate = new Date().getDate();
 // expected 1/2/3/.../31
@@ -35,12 +20,6 @@ const currentYear = new Date().getFullYear();
 const numberOfMonth = new Date().getMonth() + 1;
 // expected 1/2/3/.../12
 
-// const year = () => {
-//  configs: {},
-//  isCurrent: true,
-//  year: 0,
-// }
-
 const daysInCurrentMonth = new Date(currentYear, numberOfMonth, 0).getDate();
 // expected 28/29/30/31
 
@@ -48,7 +27,7 @@ const daysOfCurrentMonth = [];
 for (let d = 1; d <= daysInCurrentMonth; d += 1) {
   daysOfCurrentMonth.push(
     {
-      configs: dayConfigs,
+      configs: {},
       date: d,
       events: [],
       fullName: new Intl.DateTimeFormat('en-US', { weekday: 'long' }).format(new Date(currentYear, numberOfMonth - 1, d)),
@@ -58,23 +37,25 @@ for (let d = 1; d <= daysInCurrentMonth; d += 1) {
 }
 // expected [{day1},{day2},{day3}...]
 
-const months = [];
-for (let m = 1; m <= 12; m += 1) {
-  months.push(
-    new Month({
+const y = [];
+for (let d = 1; d <= 365; d += 1) {
+  y.push(new Day(
+    {
       configs: {},
+      yearDate: d,
       events: [],
       isCurrent: false,
-      monthNumber: m,
-      name: 'Feb',
-      numOfDays: 31,
-    }),
-  );
+      isSelected: false,
+      name: 'Mon',
+      year: 2022,
+    },
+  ));
 }
 
 export default createStore({
   state: {
-    testm: months,
+    testy: y,
+    // testm: months,
     currDay: {
       date: currentDate,
       fullName: currentDayFullName,
