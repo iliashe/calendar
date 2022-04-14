@@ -30,19 +30,45 @@ const months = function (year) {
   return arr;
 };
 
+// function that returns an array of months objects
+// const weeks = function (year) {
+//   const arr = [];
+//   const weekInt = [0, 0];
+//   const yearLength = (year % 4 !== 0 ? 365 : 366);
+//   let week = 0;
+//   for (let day = 1; day <= yearLength; day += 1) {
+//     if (day % 7 === 0) {
+//       week += 1;
+//       weekInt[0] = weekInt[1] + 1;
+//       weekInt[1] = day;
+//       arr.push(
+//         {
+//           interval: [
+//             weekInt[0],
+//             weekInt[1],
+//           ],
+//           weekNumber: week,
+//         },
+//       );
+//     }
+//   }
+//   return arr;
+// };
+
 export default class Day {
   constructor(props) {
     this.configs = props.configs;
     this.events = props.events;
-    this.isCurrent = props.isCurrent;
     this.isSelected = props.isSelected;
     this.year = props.year;
     this.yearDate = props.yearDate;
     // this.week
 
     this.month = this.getMonth; // expected {}/.../{ interval: [ 182, 212 ], name: 'July' }/.../{}
-    this.weekday = this.getWeekday; // expected 'Monday'/'Tuesday'.../'Sunday'
     this.monthDate = this.yearDate - this.month.interval[0] + 1; // expected 1/2/.../31
+    this.weekday = this.getWeekday; // expected 'Monday'/'Tuesday'.../'Sunday'
+    this.isCurrent = this.getCurrentDate; // expected true/false
+    // this.weekNumber = this.getWeek.weekNumber; // expected 0/1/../52
   }
 
   // getting month, that includes the day
@@ -58,8 +84,24 @@ export default class Day {
 
   // getting weekday
   get getWeekday() {
-    const date = [this.year, this.month.monthNumber - 1, this.yearDate];
+    const date = [this.year, this.month.monthNumber - 1, this.monthDate];
     const options = { weekday: 'long' };
     return new Intl.DateTimeFormat('en-US', options).format(new Date(...date));
+  }
+
+  // getting week
+  //   get getWeek() {
+  //     const $weeks = weeks(this.year);
+  //     const filterCriteria = (week) => this.yearDate >= week.interval[0]
+  //       && this.yearDate <= week.interval[1];
+  //     console.log($weeks.filter(filterCriteria));
+  //     return $weeks.filter(filterCriteria)[0];
+  //   }
+
+  // getting current month and months' date
+  get getCurrentDate() {
+    const currDate = new Date().getDate();
+    const currMonth = new Date().getMonth() + 1;
+    return this.monthDate === currDate && this.month.monthNumber === currMonth;
   }
 }
