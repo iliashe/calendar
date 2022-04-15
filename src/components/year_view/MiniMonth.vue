@@ -1,24 +1,33 @@
 <template>
 <header>
   <div class='month'>
-    {{ month.fullName }}
+    {{ month.name }}
   </div>
 </header>
 <body>
   <ul class='grid grid-cols-7 gap-5'>
-    <li v-for='day in weekdays' :key='day'>
-      {{ day.shortName }}
+    <li v-for='weekday in weekdays' :key='weekday'>
+      {{ weekday.slice(0,3) }}
     </li>
   </ul>
   <ul class='grid grid-cols-7 gap-5'>
-    <li v-for='cell in 42' :key='cell'>
-      <button
-        type='button'
-        v-if='cell >= getFirstDayOfMonth &&
-        cell < month.daysInMonth + getFirstDayOfMonth'
-      >
-        {{ cell - getFirstDayOfMonth + 1}}
-      </button>
+    <!-- first we skip cells(days) till the needed weekday  -->
+    <li v-for='cell in getFirstDayOfMonth - 1' :key='cell'>
+      CELL
+    </li>
+    <!--
+        as soon as we get on a first weekday of the month,
+        the monthdates start outputting
+     -->
+    <li v-for='day in month.days' :key='day'>
+      {{ day.monthDate }}
+    </li>
+    <!--
+      adding cells, if the number of cells < 42,
+      s.t. all months looked equal
+    -->
+    <li v-for='cell in 42 - (month.days.length + getFirstDayOfMonth)' :key='cell'>
+      CELL
     </li>
   </ul>
 </body>
@@ -30,9 +39,9 @@ import { mapMutations, mapState } from 'vuex';
 export default {
   computed: {
     getFirstDayOfMonth() {
-      return new Date(this.year, this.month.numOfMonth).getDay() === 0
+      return new Date(this.year, this.month.monthNumber).getDay() === 0
         ? 7
-        : new Date(this.year, this.month.numOfMonth).getDay();
+        : new Date(this.year, this.month.monthNumber).getDay();
     },
     ...mapState([
       'currMonth',

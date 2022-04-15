@@ -6,10 +6,10 @@
         <th class=''></th>
         <th
           class='border border-slate-600'
-          v-for='day in weekdays'
-          :key='day'
+          v-for='weekday in weekdays'
+          :key='weekday'
         >
-          {{ day.shortName }}
+          {{ weekday }}
         </th>
       </tr>
     </thead>

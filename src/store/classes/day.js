@@ -59,15 +59,15 @@ export default class Day {
   constructor(props) {
     this.configs = props.configs;
     this.events = props.events;
-    this.isSelected = props.isSelected;
     this.year = props.year;
     this.yearDate = props.yearDate;
     // this.week
 
+    this.isSelected = false;
     this.month = this.getMonth; // expected {}/.../{ interval: [ 182, 212 ], name: 'July' }/.../{}
     this.monthDate = this.yearDate - this.month.interval[0] + 1; // expected 1/2/.../31
     this.weekday = this.getWeekday; // expected 'Monday'/'Tuesday'.../'Sunday'
-    this.isCurrent = this.getCurrentDate; // expected true/false
+    // this.isCurrent = this.getCurrentDate; // expected true/false
     // this.weekNumber = this.getWeek.weekNumber; // expected 0/1/../52
   }
 
@@ -99,9 +99,9 @@ export default class Day {
   //   }
 
   // getting current month and months' date
-  get getCurrentDate() {
-    const currDate = new Date().getDate();
-    const currMonth = new Date().getMonth() + 1;
-    return this.monthDate === currDate && this.month.monthNumber === currMonth;
-  }
+//   get getCurrentDate() {
+//     const currDate = new Date().getDate();
+//     const currMonth = new Date().getMonth() + 1;
+//     return this.monthDate === currDate && this.month.monthNumber === currMonth;
+//   }
 }

@@ -1,3 +1,8 @@
+// getting object of a current month
+const getCurrMonth = (state) => (
+  state.months.filter((month) => month.name === state.currDate.currMonth.name)[0]
+);
+
 const getActiveView = (state) => (
   state.views.filter((view) => view.isActive === true)[0]
 );
@@ -13,6 +18,7 @@ const getFirstDayOfCurrMonth = (state) => (
 );
 
 export default {
+  getCurrMonth,
   getActiveView,
   getDaysInMonth,
   getFirstDayOfCurrMonth,

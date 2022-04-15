@@ -6,15 +6,15 @@
     </button>
     <!-- currMonth.numOfMonth would be better??? -->
     <select
-      v-model='currMonth.fullName'
+      v-model='currDate.currMonth.name'
       @change='updateCurrMonth(currMonth.fullName)'
     >
       <option
         v-for='month in months'
         :key='month'
-        :value='month.fullName'
+        :value='month.name'
       >   <!-- read more about key attr -->
-        {{ month.fullName }}
+        {{ month.name }}
       </option>
     </select>
     <button type='button' @click.prevent='updateCurrMonth(currMonth.numOfMonth + 1)'>
@@ -57,6 +57,7 @@ export default {
       'getFirstDayOfCurrMonth',
     ]),
     ...mapState([
+      'currDate',
       'currMonth',
       'currYear',
       'weekdays',

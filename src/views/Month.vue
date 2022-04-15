@@ -2,33 +2,40 @@
 <div class='mo'>
   <ul class='grid grid-cols-7 gap-5'>
     <li
-      v-for='(day, index) in weekdays'
+      v-for='(weekday, index) in weekdays'
       :key='index'
     >
-      {{day.fullName}}
+      {{ weekday }}
     </li>
   </ul>
   <ul class='base grid grid-cols-7 gap-5'>
-    <li class='date-cell' v-for='cell in 42' :key='cell'>
+    <!-- first we skip cells(days) till the needed weekday  -->
+    <li v-for='cell in getFirstDayOfMonth - 1' :key='cell'>
+      CELL
+    </li>
+    <li v-for='day in getCurrMonth.days' :key='day'>
+      {{ day.monthDate }}
+    </li>
+    <!-- <li class='date-cell' v-for='cell in 42' :key='cell'>
       <label
         :for="'btn' + cell"
-        v-if='cell >= getFirstDayOfCurrMonth && cell < getDaysInMonth + getFirstDayOfCurrMonth'
+        v-if='cell >= getFirstDayOfMonth && cell < getDaysInMonth + getFirstDayOfMonth'
       >
         <input
           :id="'btn' + cell"
           :type='select'
-          @change='addToSelectedDays(currMonth.daysOfCurrMonth[cell - getFirstDayOfCurrMonth])'
+          @change='addToSelectedDays(currMonth.daysOfCurrMonth[cell - getFirstDayOfMonth])'
         >
-        {{ cell - getFirstDayOfCurrMonth + 1 }}
+        {{ cell - getFirstDayOfMonth + 1 }}
         <div
           class='ev'
-          v-for='event of currMonth.daysOfCurrMonth[cell - getFirstDayOfCurrMonth].events'
+          v-for='event of currMonth.daysOfCurrMonth[cell - getFirstDayOfMonth].events'
           :key='event'
         >
           {{ event.name }}
         </div>
       </label>
-    </li>
+    </li> -->
   </ul>
   <div class='evf' v-if='createEventForm.isVisible'>
     <event-form />
@@ -46,11 +53,20 @@ export default {
     EventForm,
   },
   computed: {
+    getFirstDayOfMonth() {
+      const year = this.currDate.currYear;
+      const month = this.currDate.currMonth;
+      return new Date(year, month.monthNumber - 1).getDay() === 0
+        ? 7
+        : new Date(year, month.monthNumber - 1).getDay();
+    },
     ...mapGetters([
+      'getCurrMonth',
       'getDaysInMonth',
-      'getFirstDayOfCurrMonth',
+      // 'getFirstDayOfMonth',
     ]),
     ...mapState([
+      'currDate',
       'createEventForm',
       'select',
       'weekdays',

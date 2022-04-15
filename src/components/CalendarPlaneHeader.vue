@@ -12,9 +12,13 @@
     <button type='button' @click.prevent='updateCurrWeek(currWeek + 1)'>&rarr;</button>
   </div>
   <div class='move flex flex-row' v-if='views[2].isActive'>
-    <button type='button' @click.prevent='updateCurrMonth(currMonth.numOfMonth - 1)'>&larr;</button>
-    <p>{{ views[2].name }} {{ currMonth.numOfMonth }}</p>
-    <button type='button' @click.prevent='updateCurrMonth(currMonth.numOfMonth + 1)'>&rarr;</button>
+    <button type='button' @click.prevent='updateCurrMonth(currDate.currMonth.monthNumber - 1)'>
+      &larr;
+    </button>
+    <p>{{ views[2].name }} {{ currDate.currMonth.monthNumber }}</p>
+    <button type='button' @click.prevent='updateCurrMonth(currDate.currMonth.monthNumber + 1)'>
+      &rarr;
+    </button>
   </div>
   <div class='move flex flex-row' v-if='views[3].isActive'>
     <button type='button' @click.prevent='updateCurrYear(currYear - 1)'>&larr;</button>
@@ -51,9 +55,9 @@ export default {
       'getActiveView',
     ]),
     ...mapState([
+      'currDate',
       'createEventForm',
       'currDay',
-      'currMonth',
       'currWeek',
       'currYear',
       'views',
