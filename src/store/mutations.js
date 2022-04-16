@@ -1,3 +1,10 @@
+import Event from './classes/event';
+
+const updateCurrDate = function (state, view) {
+  const activeView = state.views.filter((v) => v === view)[0];
+  activeView.curr += 1;
+};
+
 const addToSelectedDays = function (state, day) {
   if (state.selectedDays.includes(day)) {
     state.selectedDays = state.selectedDays.filter((el) => el.date !== day.date);
@@ -7,40 +14,22 @@ const addToSelectedDays = function (state, day) {
 };
 
 /* eslint-disable */
-// it is pushed to the days of curr month too
-const commitEvent = function (state, _event) {
-  for(const day of state.selectedDays){
-    day.events.push(_event)  
-    // for(const event of day.events) {
-    //   event.name = _event.name
-    //   event.desc = _event.desc
-    // };
-  };
+const commitEvent = function (state, $event) {
+  const event = new Event({
+    desc: $event.desc,
+    name: $event.name,
+    date: $event.date,
+    startsAt: $event.startsAt,
+    endsAt: $event.endsAt,
+  });
+  state.events.push(event)
   state.createEventForm.isVisible = false;
 };
 
 
 // create button
 const  createEvent = function (state) {
-  const event = {
-    configs: {
-      color: '', // color of the text
-      icon: '', 
-      type:'', // ToDo or just event
-    },
-    date: {
-      dates: [],
-      months: [],
-      daysOfWeek: [],
-    }, // month, date, dayOfWeek
-    desc: '',
-    name: '',
-    startsOn: '',
-    endsOn: '',
-  }
-  const eventTime = event.endsOn - event.startsOn; // milliseconds
   state.createEventForm.isVisible = !state.createEventForm.isVisible;
-  state.events.push(event);
 };
 
 const toggleSelect = function (state) {
@@ -92,27 +81,14 @@ const updateCurrDay = function (state, date) {
 };
 
 const updateCurrMonth = function (state, month) {
-  const getMonth = (typeof (month) === 'string'
-    ? state.months.filter((el) => el.fullName === month)[0]
-    : month >= 1 && month <= 12
-      ? state.months.filter((el) => el.numOfMonth === month)[0]
-      : month > 12
-        ? state.months.filter((el) => el.numOfMonth === 1)[0]
-        : state.months.filter((el) => el.numOfMonth === 12)[0])
-  // February has 28/29 days
-  state.currMonth.daysInMonth = getMonth.daysInMonth;
-  state.currMonth.daysOfCurrMonth.length = 0;
-  for (let day = 1; day <= getMonth.daysInMonth; day += 1) {
-    console.log('day =', day, 'current Month =', getMonth.numOfMonth, new Intl.DateTimeFormat('en-US', { weekday: 'long' }).format(new Date(state.currYear, getMonth.numOfMonth - 1, day)))
-    state.currMonth.daysOfCurrMonth.push({
-      date: day,
-      fullName: new Intl.DateTimeFormat('en-US', { weekday: 'long' }).format(new Date(state.currYear, getMonth.numOfMonth - 1, day)),
-      shortName: new Intl.DateTimeFormat('en-US', { weekday: 'short' }).format(new Date(state.currYear, getMonth.numOfMonth - 1, day)),
-    });
+  if (typeof(month) === 'number') {
+    if (month <= 0 ) { month = 12 }
+    if (month > 12 ) { month = 1 }
+    state.currDate.currMonth = state.months.filter((m) => m.monthNumber === month)[0];
+  } else {
+    console.log(month, state.months.filter((m) => m.name === month)[0])
+    state.currDate.currMonth = state.months.filter((m) => m.name === month)[0];
   }
-  state.currMonth.fullName = getMonth.fullName;
-  state.currMonth.numOfMonth = getMonth.numOfMonth;
-  state.currMonth.shortName = getMonth.shortName;
 };
 
 const updateCurrWeek = function (state, weekNumber) {
@@ -129,6 +105,7 @@ export default {
   createEvent,
   toggleSelect,
   toggleView,
+  updateCurrDate,
   updateCurrDay,
   updateCurrMonth,
   updateCurrWeek,

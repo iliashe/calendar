@@ -5,7 +5,7 @@
       v-for='(month, index) in months'
       :key='index'
     >
-      <mini-month :month='month' :year='currYear' />
+      <mini-month :month='month' :year='currDate.currYear' />
     </li>
   </ul>
 </div>
@@ -22,7 +22,7 @@ export default {
   },
   computed: {
     ...mapState([
-      'currYear',
+      'currDate',
       'months',
     ]),
   },

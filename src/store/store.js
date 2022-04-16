@@ -112,6 +112,7 @@ const currentFullDate = {
     date: currentMonthDate,
     weekday: currentDayName,
   },
+  currWeek: 0,
 };
 
 export default createStore({
@@ -119,21 +120,21 @@ export default createStore({
     year: $year,
     today: todayFullDate,
     currDate: currentFullDate,
-    currDay: {
-      date: currentMonthDate,
-      fullName: currentDayName,
-      shortName: currentDayName.slice(0, 3),
-    },
-    currMonth: {
-      daysInMonth: daysInCurrentMonth,
-      daysOfCurrMonth: daysOfCurrentMonth,
-      fullName: currentMonthName,
-      numOfMonth: numberOfMonth,
-      shortName: currentMonthName.slice(0, 3),
-      startsOn: 0,
-    },
-    currWeek: 0,
-    currYear: currentYear,
+    // currDay: {
+    //   date: currentMonthDate,
+    //   fullName: currentDayName,
+    //   shortName: currentDayName.slice(0, 3),
+    // },
+    // currMonth: {
+    //   daysInMonth: daysInCurrentMonth,
+    //   daysOfCurrMonth: daysOfCurrentMonth,
+    //   fullName: currentMonthName,
+    //   numOfMonth: numberOfMonth,
+    //   shortName: currentMonthName.slice(0, 3),
+    //   startsOn: 0,
+    // },
+    // currWeek: 0,
+    // currYear: currentYear,
 
     createEventForm: {
       isVisible: false,
@@ -153,18 +154,22 @@ export default createStore({
       {
         name: 'Day',
         isActive: false,
+        curr: currentFullDate.currDay.date,
       },
       {
         name: 'Week',
         isActive: true,
+        curr: currentFullDate.currWeek,
       },
       {
         name: 'Month',
         isActive: false,
+        curr: currentFullDate.currMonth.monthNumber,
       },
       {
         name: 'Year',
         isActive: false,
+        curr: currentFullDate.currYear,
       },
     ],
 

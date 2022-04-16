@@ -16,26 +16,6 @@
     <li v-for='day in getCurrMonth.days' :key='day'>
       {{ day.monthDate }}
     </li>
-    <!-- <li class='date-cell' v-for='cell in 42' :key='cell'>
-      <label
-        :for="'btn' + cell"
-        v-if='cell >= getFirstDayOfMonth && cell < getDaysInMonth + getFirstDayOfMonth'
-      >
-        <input
-          :id="'btn' + cell"
-          :type='select'
-          @change='addToSelectedDays(currMonth.daysOfCurrMonth[cell - getFirstDayOfMonth])'
-        >
-        {{ cell - getFirstDayOfMonth + 1 }}
-        <div
-          class='ev'
-          v-for='event of currMonth.daysOfCurrMonth[cell - getFirstDayOfMonth].events'
-          :key='event'
-        >
-          {{ event.name }}
-        </div>
-      </label>
-    </li> -->
   </ul>
   <div class='evf' v-if='createEventForm.isVisible'>
     <event-form />
@@ -62,8 +42,7 @@ export default {
     },
     ...mapGetters([
       'getCurrMonth',
-      'getDaysInMonth',
-      // 'getFirstDayOfMonth',
+
     ]),
     ...mapState([
       'currDate',

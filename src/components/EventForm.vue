@@ -1,24 +1,37 @@
 <template>
 <div class='container'>
   <div class='form'>
-    <button @click.prevent='commitEvent(events[events.length - 1])'>SAVE</button>
+    <button
+      @click.prevent='commitEvent(
+        {
+          name: eventName,
+          desc: eventDesc,
+          startsAt: eventStart,
+          endsAt: eventEnd,
+          date: eventDate,
+
+        }
+      )'
+    >
+      SAVE
+    </button>
     <div class=''>
       <label for='time-start'>Starts on
-        <input id='time-start' v-model='events[events.length - 1].startsOn' type='time'/>
+        <input id='time-start' v-model='eventStart' type='time'/>
       </label>
     </div>
     <div class=''>
       <label for='time-end'>Ends on
-        <input id='time-end' v-model='events[events.length - 1].endsOn' type='time'/>
+        <input id='time-end' v-model='eventEnd' type='time'/>
       </label>
     </div>
     <div class=''>
       <label for='name'>Events' name
-      <input id='name' v-model='events[events.length - 1].name' /></label>
+      <input id='name' v-model='eventName' /></label>
     </div>
     <div class=''>
       <label for='desc'>Events' description
-        <textarea name='desc' id='desc' rows='5' cols='33' v-model='events[events.length - 1].desc'>
+        <textarea name='desc' id='desc' rows='5' cols='33' v-model='eventDesc'>
         </textarea>
       </label>
     </div>
@@ -30,6 +43,15 @@
 import { mapMutations, mapState } from 'vuex';
 
 export default {
+  data() {
+    return {
+      eventName: '',
+      eventDesc: '',
+      eventStart: '',
+      eventEnd: '',
+      eventDate: 0,
+    };
+  },
   computed: {
     ...mapState([
       'events',

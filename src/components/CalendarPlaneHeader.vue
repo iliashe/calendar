@@ -1,12 +1,12 @@
 <template>
 <div class='calendar-plane-header flex flex-row justify-around'>
   <!-- MAKE A LOOP HERE -->
-  <div class='move flex flex-row' v-if='views[0].isActive'>
-    <button type='button' @click.prevent='updateCurrDay(currDay.date - 1)'>&larr;</button>
-    <p>{{ views[0].name }} {{ currDay.date }}</p>
-    <button type='button' @click.prevent='updateCurrDay(currDay.date + 1)'>&rarr;</button>
+  <div class='move flex flex-row'>
+    <button type='button' @click.prevent='updateCurrDate(getActiveView)'>&larr;</button>
+    <p>{{ getActiveView.name }} {{ getActiveView.curr }}</p>
+    <button type='button' @click.prevent='updateCurrDate(getActiveView)'>&rarr;</button>
   </div>
-  <div class='move flex flex-row' v-if='views[1].isActive'>
+  <!-- <div class='move flex flex-row' v-if='views[1].isActive'>
     <button type='button' @click.prevent='updateCurrWeek(currWeek - 1)'>&larr;</button>
     <p>{{ views[1].name }} {{ currWeek }}</p>
     <button type='button' @click.prevent='updateCurrWeek(currWeek + 1)'>&rarr;</button>
@@ -24,7 +24,7 @@
     <button type='button' @click.prevent='updateCurrYear(currYear - 1)'>&larr;</button>
     <p>{{ views[3].name }} {{ currYear }}</p>
     <button type='button' @click.prevent='updateCurrYear(currYear + 1)'>&rarr;</button>
-  </div>
+  </div> -->
   <div class='toggle-view flex flex-row justify-around'>
     <button
       type='button'
@@ -68,7 +68,7 @@ export default {
       'createEvent',
       'toggleSelect',
       'toggleView',
-      'updateCurrDay',
+      'updateCurrDate',
       'updateCurrMonth',
       'updateCurrWeek',
       'updateCurrYear',
