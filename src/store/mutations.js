@@ -17,7 +17,7 @@ const addToSelectedDays = function (state, day) {
 const commitEvent = function (state, $event) {
   const event = new Event({
     desc: $event.desc,
-    name: $event.name,
+    name: $event.title,
     date: $event.date,
     startsAt: $event.startsAt,
     endsAt: $event.endsAt,

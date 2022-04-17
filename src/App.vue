@@ -1,7 +1,7 @@
 <template>
-<section class='side-menu'>
+<aside class='side-menu'>
   <side-menu />
-</section>
+</aside>
 <section class='container calendar-plane flex-1 flex-col'>
   <calendar-plane-header />
   <day-view v-if='views[0].isActive' />

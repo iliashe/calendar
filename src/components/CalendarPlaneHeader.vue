@@ -6,25 +6,6 @@
     <p>{{ getActiveView.name }} {{ getActiveView.curr }}</p>
     <button type='button' @click.prevent='updateCurrDate(getActiveView)'>&rarr;</button>
   </div>
-  <!-- <div class='move flex flex-row' v-if='views[1].isActive'>
-    <button type='button' @click.prevent='updateCurrWeek(currWeek - 1)'>&larr;</button>
-    <p>{{ views[1].name }} {{ currWeek }}</p>
-    <button type='button' @click.prevent='updateCurrWeek(currWeek + 1)'>&rarr;</button>
-  </div>
-  <div class='move flex flex-row' v-if='views[2].isActive'>
-    <button type='button' @click.prevent='updateCurrMonth(currDate.currMonth.monthNumber - 1)'>
-      &larr;
-    </button>
-    <p>{{ views[2].name }} {{ currDate.currMonth.monthNumber }}</p>
-    <button type='button' @click.prevent='updateCurrMonth(currDate.currMonth.monthNumber + 1)'>
-      &rarr;
-    </button>
-  </div>
-  <div class='move flex flex-row' v-if='views[3].isActive'>
-    <button type='button' @click.prevent='updateCurrYear(currYear - 1)'>&larr;</button>
-    <p>{{ views[3].name }} {{ currYear }}</p>
-    <button type='button' @click.prevent='updateCurrYear(currYear + 1)'>&rarr;</button>
-  </div> -->
   <div class='toggle-view flex flex-row justify-around'>
     <button
       type='button'
@@ -40,9 +21,9 @@
     <p>img</p>
   </div>
   <div class='select-button'>
-    <button @click='toggleSelect'>SELECT</button>
+    <button @click='toggleSelect'>SELECT CELLS</button>
   </div>
-  <button @click='createEvent()'>CREATE +</button>
+  <button @click='createEvent()'>CREATE EVENT</button>
 </div>
 </template>
 

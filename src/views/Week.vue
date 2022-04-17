@@ -17,7 +17,7 @@
       <tr class='grid grid-cols-8 w-full' v-for='(hour, index) in 24' :key='index'>
         <td>{{ hour - 1 }} AM</td>
         <td
-          class='border border-slate-600'
+          class='border border-slate-600 grid grid-cols-8 grid-rows-24'
           v-for='(cell, index) in 7'
           :key='index'
         >
@@ -54,4 +54,9 @@ tbody {
   height: 300px;
   overflow: auto;
 }
+
+::-webkit-scrollbar {
+  display: none;
+}
+
 </style>

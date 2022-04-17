@@ -17,9 +17,7 @@
       {{ day.monthDate }}
     </li>
   </ul>
-  <div class='evf' v-if='createEventForm.isVisible'>
-    <event-form />
-  </div>
+  <event-form v-if='createEventForm.isVisible' />
 </div>
 </template>
 
@@ -69,13 +67,6 @@ export default {
 
 .date-cell {
   background-color: beige;
-}
-
-.evf {
-  background-color: #6495ED;
-  top: 50px;
-  position: absolute;
-  z-index: 50;
 }
 
 .mo {

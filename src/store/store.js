@@ -137,7 +137,7 @@ export default createStore({
     // currYear: currentYear,
 
     createEventForm: {
-      isVisible: false,
+      isVisible: true,
     },
 
     events: [
@@ -158,12 +158,12 @@ export default createStore({
       },
       {
         name: 'Week',
-        isActive: true,
+        isActive: false,
         curr: currentFullDate.currWeek,
       },
       {
         name: 'Month',
-        isActive: false,
+        isActive: true,
         curr: currentFullDate.currMonth.monthNumber,
       },
       {
