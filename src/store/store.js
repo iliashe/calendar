@@ -15,6 +15,11 @@ const currentDayName = new Intl.DateTimeFormat('en-US', { weekday: 'long' }).for
 const currentMonthName = new Intl.DateTimeFormat('en-US', { month: 'long' }).format(new Date());
 // expected 'January'/'February'/'March'/.../'December'
 
+const currentTime = {
+  hour: new Date().getHours(),
+  minutes: new Date().getMinutes(),
+};
+
 const currentYear = new Date().getFullYear();
 // expected .../2022/2023/2024/...
 
@@ -90,15 +95,16 @@ const $weekdays = [
 
 // todays' Date, that will not be mutated by a user
 const todayFullDate = {
-  currYear: currentYear,
-  currMonth: {
-    monthNumber: numberOfMonth,
-    name: currentMonthName,
-  },
-  currDay: {
+  day: {
     date: currentMonthDate,
     weekday: currentDayName,
   },
+  month: {
+    monthNumber: numberOfMonth,
+    name: currentMonthName,
+  },
+  time: currentTime,
+  year: currentYear,
 };
 
 // Date, that is being watched by a user. Is set to todays' Date by default.

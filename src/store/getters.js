@@ -8,6 +8,18 @@ const getCurrMonth = (state) => (
   state.months.filter((month) => month.name === state.currDate.currMonth.name)[0]
 );
 
+// getting current time in format hh:mm
+const getTime = (state) => (
+  {
+    h: state.today.time.hour,
+    m: state.today.time.minutes,
+  }
+);
+
+// getting todays full date in format 18.Apr 2022
+const getToday = (state) => (
+  `${state.today.day.date}. ${state.today.month.name.slice(0, 3)} ${state.today.year}`
+);
 // const getDaysInMonth = (state) => (
 //   new Date(state.currYear, state.currMonth.numOfMonth, 0).getDate()
 // );
@@ -19,8 +31,10 @@ const getCurrMonth = (state) => (
 // );
 
 export default {
-  getCurrMonth,
   getActiveView,
+  getCurrMonth,
+  getTime,
+  getToday,
 //   getDaysInMonth,
 //   getFirstDayOfCurrMonth,
 };

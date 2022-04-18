@@ -1,62 +1,86 @@
 <template>
   <form class='h-96 overflow-auto w-1/4'>
-    <div class='h-full w-full grid grid-cols-12 grid-rows-12'>
-      <header class='col-span-full row-span-2'>
-        <div class='grid grid-cols-12 grid-row-1'>
-          <button class='col-span-2'>
-            Close
-          </button>
-          <h3 class='col-start-5 col-span-3'>New Event</h3>
-          <button class='col-start-9 col-span-4'>Save</button>
-        </div>
-      </header>
-      <main class='col-span-full row-span-9'>
-        <div class='h-full grid grid-cols-12 grid-rows-12'>
-          <header class='col-span-12 row-span-1'>
-            <div class='grid grid-cols-12'>
+    <!-- forms content -->
+    <div class='h-144 w-full grid grid-cols-12 grid-rows-12'>
+      <!-- header -->
+      <div class='col-span-full row-span-1'>
+        <header class='h-full w-full grid grid-cols-12 grid-rows-4'>
+          <!-- close button -->
+          <div class='col-span-3 row-start-2 row-span-2'>
+            <div class='h-full w-full grid grid-cols-4 grid-rows-3'>
+              <button class='col-span-full row-span-full'>
+                CLOSE
+              </button>
+            </div>
+          </div>
+          <!-- 'New Event' -->
+          <div class='col-span-6 row-start-2 row-span-2'>
+            <div class='h-full w-full grid grid-cols-4 grid-rows-3'>
+              <div class='col-start-2 col-span-4 row-span-full'>
+                NEW EVENT
+              </div>
+            </div>
+          </div>
+          <!-- save button -->
+          <div class='col-span-3 row-start-2 row-span-2'>
+            <div class='h-full w-full grid grid-cols-4 grid-rows-3'>
+              <button class='col-span-full row-span-full'>
+                SAVE
+              </button>
+            </div>
+          </div>
+        </header>
+      </div>
+      <!-- body -->
+      <div class='col-span-full row-span-8'>
+        <main class='h-full w-full grid grid-cols-12 grid-rows-10'>
+          <!-- title -->
+          <div class='col-span-full row-span-1'>
+            <div class='h-full w-full grid grid-cols-12 grid-rows-2'>
               <!-- eslint-disable-next-line -->
-              <label for='events-title' class='col-span-3'>
-                Title
+              <label for='title' class='col-span-2'>
+                TITLE
               </label>
-              <input id='events-title' class='col-span-9'/>
+              <input id='title' class='col-start-3 col-span-full' />
             </div>
-          </header>
-          <main class=''>
-            <div class=''>
-              <h1>Time</h1>
-              <div>
-                <label for='event-start'>
-                  Starts
-                  <button type='button'>
-                    Choose date
-                  </button>
-                  <input id='event-start' type='time' />
-                </label>
+          </div>
+          <!-- time management -->
+          <div class='col-span-full row-start-2 row-span-6'>
+            <div class='h-full w-full grid grid-cols-12 grid-rows-5'>
+              <!-- all-day -->
+              <div class='col-span-12 row-span-1'>
+                <div class='h-full w-full grid grid-cols-12 grid-rows-1'>
+                  <!-- eslint-disable -->
+                  <label for='allday' class='col-span-3'>
+                    ALL-DAY
+                  </label>
+                  <input type='checkbox' id='allday' class='col-start-12' />
+                </div>
               </div>
-              <div>
-                <label for='event-start'>
-                  Ends
-                  <button type='button'>
-                    Choose date
+              <!-- starts -->
+              <div class='col-span-12 row-span-1'>
+                <div class='h-full w-full grid grid-cols-12 grid-rows-4'>
+                  <div class='col-span-3 row-start-2 row-span-1'>STARTS</div>
+                  <button class='col-start-7 col-span-4 row-span-full'>{{ getToday }}</button>
+                  <button class='col-start-11 col-span-2 row-span-full'>
+                    {{ getTime.h }} : 00
                   </button>
-                  <input id='event-end' type='time' />
-                </label>
+                </div>
               </div>
-              <button>Repeat</button>
+              <!-- ends -->
+              <div class='col-span-12 row-span-1'>
+                <div class='h-full w-full grid grid-cols-12 grid-rows-4'>
+                  <div class='col-span-3 row-start-2 row-span-1'>ENDS</div>
+                  <button class='col-start-7 col-span-4 row-span-full'>{{ getToday }}</button>
+                  <button class='col-start-11 col-span-2 row-span-full'>
+                    {{ getTime.h + 1}} : 00
+                  </button>
+                </div>
+              </div>
             </div>
-            <div class=''>
-              <h5>Options</h5>
-            </div>
-          </main>
-        </div>
-      </main>
-      <!--<footer class=''>
-      <h5>Description</h5>
-      <label for='event-desc'>
-        <textarea id='event-desc'>
-        </textarea>
-      </label>
-      </footer> -->
+          </div>
+        </main>
+      </div>
     </div>
   </form>
 <!-- <div class='container'>
@@ -73,33 +97,11 @@
       )'
     >
       SAVE
-    </button>
-    <div class=''>
-      <label for='time-start'>Starts on
-        <input id='time-start' v-model='eventStart' type='time'/>
-      </label>
-    </div>
-    <div class=''>
-      <label for='time-end'>Ends on
-        <input id='time-end' v-model='eventEnd' type='time'/>
-      </label>
-    </div>
-    <div class=''>
-      <label for='name'>Events' name
-      <input id='name' v-model='eventName' /></label>
-    </div>
-    <div class=''>
-      <label for='desc'>Events' description
-        <textarea name='desc' id='desc' rows='5' cols='33' v-model='eventDesc'>
-        </textarea>
-      </label>
-    </div>
-  </div>
-</div> -->
+-->
 </template>
 
 <script>
-import { mapMutations, mapState } from 'vuex';
+import { mapGetters, mapMutations, mapState } from 'vuex';
 
 export default {
   data() {
@@ -114,6 +116,10 @@ export default {
     };
   },
   computed: {
+    ...mapGetters([
+      'getTime',
+      'getToday',
+    ]),
     ...mapState([
       'events',
     ]),
@@ -129,11 +135,22 @@ export default {
 
 <style scoped>
 form {
-  background-color: #6495ED;
+  background-color: #f8f8f8;
+  border: solid;
   top: 50px;
   position: absolute;
   z-index: 50;
   padding: 20px;
   padding-top: 20px;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+::-webkit-scrollbar:active {
+  width: 5px;
+  height: 8px;
+  background-color: #aaa; /* or add it to the track */
 }
 </style>
