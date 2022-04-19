@@ -3,7 +3,7 @@
     <!-- forms content -->
     <div class='h-144 w-full grid grid-cols-12 grid-rows-12'>
       <!-- header -->
-      <div class='col-span-full row-span-1'>
+      <div class='col-span-full row-start-1 row-span-1'>
         <header class='h-full w-full grid grid-cols-12 grid-rows-4'>
           <!-- close button -->
           <div class='col-span-3 row-start-2 row-span-2'>
@@ -31,8 +31,8 @@
           </div>
         </header>
       </div>
-      <!-- body -->
-      <div class='col-span-full row-span-8'>
+      <!-- main -->
+      <div class='col-span-full row-start-2 row-span-6'>
         <main class='h-full w-full grid grid-cols-12 grid-rows-10'>
           <!-- title -->
           <div class='col-span-full row-span-1'>
@@ -77,9 +77,44 @@
                   </button>
                 </div>
               </div>
+              <!-- repeat -->
+              <div class='col-span-12 row-span-1'>
+                <div class='h-full w-full grid grid-cols-12 grid-rows-6'>
+                  <div class='col-span-3 row-start-3 row-span-1'>REPEAT</div>
+                  <button class='col-start-7 col-span-4 row-start-2 row-span-full'>NEVER >></button>
+                </div>
+              </div>
+              <!-- end repeat -->
+              <div class='col-span-12 row-span-1'>
+                <div class='h-full w-full grid grid-cols-12 grid-rows-6'>
+                  <div class='col-span-4 row-start-3 row-span-1'>END REPEAT</div>
+                  <button class='col-start-7 col-span-4 row-start-2 row-span-full'>NEVER >></button>
+                </div>
+              </div>
             </div>
           </div>
         </main>
+      </div>
+      <!-- footer -->
+      <div class='col-span-full row-span-3'>
+        <footer class='h-full w-full grid grid-cols-12 grid-rows-12'>
+          <!-- options -->
+          <button class='col-span-full row-span-2'>
+            <div class='h-full w-full grid grid-col-12 grid-row-1'>
+              <span class='col-start-1 col-span-4'>OPTIONS</span>
+              <span class='col-start-10 col-span-2'>>></span>
+            </div>
+          </button>
+          <!-- description -->
+          <div class='col-span-full row-start-4 row-span-full'>
+            <div class='h-full w-full grid grid-cols-12 grid-rows-12'>
+              <label class='col-span-full row-span-1'>
+                DESCRIPTION
+              </label>
+              <textarea class='col-span-full row-start-4 row-span-full'></textarea>
+            </div>
+          </div>
+        </footer>
       </div>
     </div>
   </form>

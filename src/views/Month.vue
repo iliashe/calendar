@@ -23,7 +23,7 @@
 
 <script>
 import { mapGetters, mapState, mapMutations } from 'vuex';
-import EventForm from '../components/EventForm.vue';
+import EventForm from '../components/event_form/EventForm.vue';
 
 export default {
   name: 'month-view',
