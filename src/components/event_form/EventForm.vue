@@ -8,7 +8,9 @@
           <!-- close button -->
           <div class='col-span-3 row-start-2 row-span-2'>
             <div class='h-full w-full grid grid-cols-4 grid-rows-3'>
-              <button class='col-span-full row-span-full'>
+              <button
+                class='col-span-full row-span-full'
+              >
                 CLOSE
               </button>
             </div>
@@ -24,7 +26,10 @@
           <!-- save button -->
           <div class='col-span-3 row-start-2 row-span-2'>
             <div class='h-full w-full grid grid-cols-4 grid-rows-3'>
-              <button class='col-span-full row-span-full'>
+              <button
+                class='col-span-full row-span-full'
+                @click.prevent='commitEvent(event)'
+              >
                 SAVE
               </button>
             </div>
@@ -41,11 +46,14 @@
               <label for='title' class='col-span-2'>
                 TITLE
               </label>
-              <input id='title' class='col-start-3 col-span-full' />
+              <input class='col-start-3 col-span-full row-span-2'
+                id='title'
+                v-model='event.title'
+              />
             </div>
           </div>
           <!-- time management -->
-          <div class='col-span-full row-start-2 row-span-6'>
+          <div class='col-span-full row-start-3 row-span-6'>
             <div class='h-full w-full grid grid-cols-12 grid-rows-5'>
               <!-- all-day -->
               <div class='col-span-12 row-span-1'>
@@ -54,41 +62,55 @@
                   <label for='allday' class='col-span-3'>
                     ALL-DAY
                   </label>
-                  <input type='checkbox' id='allday' class='col-start-12' />
+                  <input class='col-start-12'
+                    id='allday'
+                    type='checkbox'
+                    v-model='event.allday'
+                  />
                 </div>
               </div>
               <!-- starts -->
               <div class='col-span-12 row-span-1'>
                 <div class='h-full w-full grid grid-cols-12 grid-rows-4'>
                   <div class='col-span-3 row-start-2 row-span-1'>STARTS</div>
-                  <button class='col-start-7 col-span-4 row-span-full'>{{ getToday }}</button>
-                  <button class='col-start-11 col-span-2 row-span-full'>
-                    {{ getTime.h }} : 00
-                  </button>
+                  <!-- MAKE OWN INPUT COMPONENTS OR USE JS TO PUT A VALUE -->
+                  <input class='col-start-5 col-span-4 row-span-full'
+                    type='date'
+                    v-model='event.start.date'
+                  />
+                  <input class='col-start-10 col-span-4 row-span-full'
+                    type='time'
+                    v-model='event.start.time'
+                  />
                 </div>
               </div>
               <!-- ends -->
               <div class='col-span-12 row-span-1'>
                 <div class='h-full w-full grid grid-cols-12 grid-rows-4'>
                   <div class='col-span-3 row-start-2 row-span-1'>ENDS</div>
-                  <button class='col-start-7 col-span-4 row-span-full'>{{ getToday }}</button>
-                  <button class='col-start-11 col-span-2 row-span-full'>
-                    {{ getTime.h + 1}} : 00
-                  </button>
+                  <!-- MAKE OWN INPUT COMPONENTS -->
+                  <input class='col-start-5 col-span-4 row-span-full'
+                    type='date'
+                    v-model='event.end.date'
+                  />
+                  <input class='col-start-10 col-span-4 row-span-full'
+                    type='time'
+                    v-model='event.end.time'
+                  />
                 </div>
               </div>
               <!-- repeat -->
               <div class='col-span-12 row-span-1'>
                 <div class='h-full w-full grid grid-cols-12 grid-rows-6'>
                   <div class='col-span-3 row-start-3 row-span-1'>REPEAT</div>
-                  <button class='col-start-7 col-span-4 row-start-2 row-span-full'>NEVER >></button>
+                  <button class='col-start-9 col-span-4 row-start-2 row-span-full'>NEVER >></button>
                 </div>
               </div>
               <!-- end repeat -->
               <div class='col-span-12 row-span-1'>
                 <div class='h-full w-full grid grid-cols-12 grid-rows-6'>
                   <div class='col-span-4 row-start-3 row-span-1'>END REPEAT</div>
-                  <button class='col-start-7 col-span-4 row-start-2 row-span-full'>NEVER >></button>
+                  <button class='col-start-9 col-span-4 row-start-2 row-span-full'>NEVER >></button>
                 </div>
               </div>
             </div>
@@ -111,7 +133,11 @@
               <label class='col-span-full row-span-1'>
                 DESCRIPTION
               </label>
-              <textarea class='col-span-full row-start-4 row-span-full'></textarea>
+              <textarea
+                class='col-span-full row-start-4 row-span-full'
+                v-model='event.desc'
+              >
+              </textarea>
             </div>
           </div>
         </footer>
@@ -142,11 +168,17 @@ export default {
   data() {
     return {
       event: {
+        allday: false,
         title: '',
         desc: '',
-        start: '',
-        end: '',
-        date: 0,
+        start: {
+          date: '',
+          time: '',
+        },
+        end: {
+          date: '',
+          time: '',
+        },
       },
     };
   },

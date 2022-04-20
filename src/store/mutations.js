@@ -16,11 +16,11 @@ const addToSelectedDays = function (state, day) {
 /* eslint-disable */
 const commitEvent = function (state, $event) {
   const event = new Event({
+    allday: $event.allday,
     desc: $event.desc,
-    name: $event.title,
-    date: $event.date,
-    startsAt: $event.startsAt,
-    endsAt: $event.endsAt,
+    title: $event.title,
+    start: $event.start,
+    end: $event.end,
   });
   state.events.push(event)
   state.createEventForm.isVisible = false;
