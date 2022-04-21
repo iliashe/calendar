@@ -15,6 +15,7 @@ const addToSelectedDays = function (state, day) {
 
 /* eslint-disable */
 const commitEvent = function (state, $event) {
+  // creating event object
   const event = new Event({
     allday: $event.allday,
     desc: $event.desc,
@@ -22,7 +23,15 @@ const commitEvent = function (state, $event) {
     start: $event.start,
     end: $event.end,
   });
+  // getting day, on which the event takes place
+  const selectedDate = state.year.filter((day) => 
+    day.month.monthNumber === new Date($event.start.date).getMonth() + 1
+    && day.monthDate === new Date($event.start.date).getDate())[0]
+  // pushing event to the day
+  selectedDate.events.push($event)
+  // pushing event to the list of all events
   state.events.push(event)
+  // closing the form
   state.createEventForm.isVisible = false;
 };
 
